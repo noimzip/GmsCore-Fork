@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.8.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.8.2)" variant="all" version="8.8.2">
+<issues format="6" by="lint 8.13.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.13.0)" variant="all" version="8.13.0">
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="        NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, notifyBuilder.build())"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DownloadManager.kt"
+            line="123"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="        NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, notifyBuilder.build())"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DownloadManager.kt"
+            line="130"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="        notificationManager.notify(sessionId, this.build())"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/ui/InstallProgressNotification.kt"
+            line="45"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="        notificationManager.notify(sessionId, this.build())"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/ui/InstallProgressNotification.kt"
+            line="88"
+            column="9"/>
+    </issue>
 
     <issue
         id="ApplySharedPref"
@@ -14,7 +58,7 @@
 
     <issue
         id="InlinedApi"
-        message="Field requires API level 28 (current min is 21): `android.content.pm.PackageManager#GET_SIGNING_CERTIFICATES`"
+        message="Field requires API level 28 (current min is 26): `android.content.pm.PackageManager#GET_SIGNING_CERTIFICATES`"
         errorLine1="                    expressIntegritySession.packageName, PackageManager.GET_SIGNING_CERTIFICATES or PackageManager.GET_SIGNATURES"
         errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -36,7 +80,7 @@
 
     <issue
         id="InlinedApi"
-        message="Field requires API level 29 (current min is 21): `android.content.pm.ServiceInfo#FOREGROUND_SERVICE_TYPE_DATA_SYNC`"
+        message="Field requires API level 29 (current min is 26): `android.content.pm.ServiceInfo#FOREGROUND_SERVICE_TYPE_DATA_SYNC`"
         errorLine1="                                this, session, it, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC"
         errorLine2="                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -46,24 +90,24 @@
     </issue>
 
     <issue
-        id="NewApi"
-        message="`&lt;com.android.vending.GrantFakeSignaturePermissionActivity>` requires API level 23 (current min is 21)"
-        errorLine1="        &lt;activity"
-        errorLine2="        ^">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="87"
-            column="9"/>
-    </issue>
-
-    <issue
         id="UnusedAttribute"
-        message="Attribute `forceQueryable` is only used in API level 30 and higher (current min is 21)"
+        message="Attribute `forceQueryable` is only used in API level 30 and higher (current min is 26)"
         errorLine1="        android:forceQueryable=&quot;true&quot;"
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
             line="73"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="ForegroundServicePermission"
+        message="foregroundServiceType:dataSync requires permission:[android.permission.FOREGROUND_SERVICE_DATA_SYNC]"
+        errorLine1="        &lt;service android:name=&quot;.installer.InstallService&quot;"
+        errorLine2="        ^">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="245"
             column="9"/>
     </issue>
 
@@ -80,23 +124,12 @@
 
     <issue
         id="GradleDependency"
-        message="A newer version of androidx.webkit:webkit than 1.10.0 is available: 1.14.0"
-        errorLine1="    implementation &quot;androidx.webkit:webkit:$webkitVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="111"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
         message="A newer version of androidx.compose:compose-bom than 2022.10.00 is available: 2025.12.00"
         errorLine1="    implementation platform(&apos;androidx.compose:compose-bom:2022.10.00&apos;)"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle"
-            line="115"
+            line="116"
             column="20"/>
     </issue>
 
@@ -107,73 +140,7 @@
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle"
-            line="119"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of io.coil-kt:coil-compose than 2.4.0 is available: 2.7.0"
-        errorLine1="    implementation(&quot;io.coil-kt:coil-compose:2.4.0&quot;)"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
             line="120"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of com.google.android.material:material than 1.11.0 is available: 1.13.0"
-        errorLine1="    implementation &quot;com.google.android.material:material:$materialVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="122"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-android than 1.8.1 is available: 1.10.2"
-        errorLine1="    implementation &quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="136"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.7.0 is available: 2.10.0"
-        errorLine1="    implementation &quot;androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="139"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.core:core-ktx than 1.12.0 is available: 1.17.0"
-        errorLine1="    implementation &quot;androidx.core:core-ktx:$coreVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="140"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.1"
-        errorLine1="    implementation &quot;androidx.appcompat:appcompat:$appcompatVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="141"
             column="20"/>
     </issue>
 
@@ -184,18 +151,51 @@
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle"
-            line="142"
+            line="143"
             column="20"/>
     </issue>
 
     <issue
-        id="GradleDependency"
-        message="A newer version of androidx.preference:preference-ktx than 1.2.0 is available: 1.2.1"
-        errorLine1="    implementation &quot;androidx.preference:preference-ktx:$preferenceVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.okhttp3:okhttp than 5.0.0-alpha.14 is available: 5.3.2"
+        errorLine1="    implementation &quot;com.squareup.okhttp3:okhttp:$okHttpVersion&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle"
-            line="143"
+            line="108"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.coil-kt:coil-compose than 2.4.0 is available: 2.7.0"
+        errorLine1="    implementation(&quot;io.coil-kt:coil-compose:2.4.0&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="121"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.coil-kt:coil-svg than 2.2.2 is available: 2.7.0"
+        errorLine1="    implementation(&quot;io.coil-kt:coil-svg:2.2.2&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="122"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.accompanist:accompanist-systemuicontroller than 0.28.0 is available: 0.36.0"
+        errorLine1="    implementation &quot;com.google.accompanist:accompanist-systemuicontroller:0.28.0&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="124"
             column="20"/>
     </issue>
 
@@ -258,7 +258,7 @@
         id="Typos"
         message="&quot;internett&quot; is usually capitalized as &quot;Internett&quot;"
         errorLine1="    &lt;string name=&quot;error_network&quot;>Ikke koblet til internett. Sjekk at Wi-Fi eller mobilt internett er skrudd på og prøv igjen.&lt;/string>"
-        errorLine2="                                                 ^">
+        errorLine2="                                                 ~~~~~~~~~">
         <location
             file="src/main/res/values-nb-rNO/strings.xml"
             line="27"
@@ -269,7 +269,7 @@
         id="Typos"
         message="&quot;internett&quot; is usually capitalized as &quot;Internett&quot;"
         errorLine1="    &lt;string name=&quot;error_network&quot;>Ikke koblet til internett. Sjekk at Wi-Fi eller mobilt internett er skrudd på og prøv igjen.&lt;/string>"
-        errorLine2="                                                                                        ^">
+        errorLine2="                                                                                        ~~~~~~~~~">
         <location
             file="src/main/res/values-nb-rNO/strings.xml"
             line="27"
@@ -420,6 +420,17 @@
     </issue>
 
     <issue
+        id="QueryAllPackagesPermission"
+        message="A `&lt;queries>` declaration should generally be used instead of QUERY_ALL_PACKAGES; see https://g.co/dev/packagevisibility for details"
+        errorLine1="    &lt;uses-permission android:name=&quot;android.permission.QUERY_ALL_PACKAGES&quot; />"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="25"
+            column="22"/>
+    </issue>
+
+    <issue
         id="ObsoleteSdkInt"
         message="Unnecessary; `SDK_INT` is always >= 21"
         errorLine1="            tools:targetApi=&quot;21&quot; />"
@@ -520,7 +531,40 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 24) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DeviceSyncInfo.kt"
+            line="122"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 24) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DeviceSyncInfo.kt"
+            line="131"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="                if (SDK_INT >= 24) {"
+        errorLine2="                    ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DeviceSyncInfo.kt"
+            line="145"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="        if (SDK_INT >= 21) {"
         errorLine2="            ~~~~~~~~~~~~~">
         <location
@@ -531,13 +575,46 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="            if (SDK_INT >= 24) {"
+        errorLine2="                ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DeviceSyncInfo.kt"
+            line="176"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="                    if (SDK_INT >= 21) {"
         errorLine2="                        ~~~~~~~~~~~~~">
         <location
             file="src/main/kotlin/com/google/android/finsky/DeviceSyncInfo.kt"
             line="302"
             column="25"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 26) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DownloadManager.kt"
+            line="76"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 23"
+        errorLine1="@RequiresApi(23)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/android/vending/GrantFakeSignaturePermissionActivity.java"
+            line="13"
+            column="1"/>
     </issue>
 
     <issue
@@ -619,6 +696,17 @@
 
     <issue
         id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="    if (android.os.Build.VERSION.SDK_INT >= 26) {"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/ui/InstallProgressNotification.kt"
+            line="189"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
         message="Unnecessary; `SDK_INT` is always >= 21"
         errorLine1="@RequiresApi(21)"
         errorLine2="~~~~~~~~~~~~~~~~">
@@ -637,6 +725,39 @@
             file="src/main/kotlin/com/android/vending/installer/InstallService.kt"
             line="36"
             column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (android.os.Build.VERSION.SDK_INT >= 26) for (dependency in app.dependencies) {"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/android/vending/installer/InstallService.kt"
+            line="99"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="    if (android.os.Build.VERSION.SDK_INT >= 24) {"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/IntegrityExtensions.kt"
+            line="227"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="    if (SDK_INT >= 26) {"
+        errorLine2="        ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/android/vending/licensing/LicenseServiceNotification.kt"
+            line="101"
+            column="9"/>
     </issue>
 
     <issue
@@ -674,6 +795,28 @@
 
     <issue
         id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is never &lt; 26"
+        errorLine1="            if (SDK_INT &lt; 23) return false"
+        errorLine2="                ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/splitinstallservice/SplitInstallManager.kt"
+            line="54"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 23"
+        errorLine1="    @RequiresApi(23)"
+        errorLine2="    ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/splitinstallservice/SplitInstallManager.kt"
+            line="132"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
         message="Unnecessary; `SDK_INT` is always >= 21"
         errorLine1="@RequiresApi(21)"
         errorLine2="~~~~~~~~~~~~~~~~">
@@ -696,7 +839,29 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="            timeZoneOffset = if (SDK_INT >= 24) TimeZone.getDefault().rawOffset.toLong() else 0,"
+        errorLine2="                                 ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/Utils.kt"
+            line="328"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="            timeZoneDisplayName = if (SDK_INT >= 24) TimeZone.getDefault().displayName!! else &quot;&quot;,"
+        errorLine2="                                      ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/Utils.kt"
+            line="334"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="                if (SDK_INT >= 21) {"
         errorLine2="                    ~~~~~~~~~~~~~">
         <location
@@ -707,7 +872,7 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="        if (android.os.Build.VERSION.SDK_INT >= 21) {"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -729,16 +894,48 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="This folder configuration (`v21`) is unnecessary; `minSdkVersion` is 21. Merge all the resources in this folder into `drawable`.">
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="                        if (android.os.Build.VERSION.SDK_INT >= 26) {"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/ui/WorkAppsActivity.kt"
+            line="119"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v21`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `drawable`.">
         <location
             file="src/main/res/drawable-v21"/>
     </issue>
 
     <issue
         id="ObsoleteSdkInt"
-        message="This folder configuration (`v11`) is unnecessary; `minSdkVersion` is 21. Merge all the resources in this folder into `values`.">
+        message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `drawable`.">
+        <location
+            file="src/main/res/drawable-v26"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `mipmap-anydpi`.">
+        <location
+            file="src/main/res/mipmap-anydpi-v26"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v11`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `values`.">
         <location
             file="src/main/res/values-v11"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `values`.">
+        <location
+            file="src/main/res/values-v26"/>
     </issue>
 
     <issue
@@ -761,17 +958,6 @@
             file="src/main/res/layout/activity_install_reminder.xml"
             line="41"
             column="6"/>
-    </issue>
-
-    <issue
-        id="VectorPath"
-        message="Very long vector path (1642 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
-        errorLine1="      android:pathData=&quot;M25.2,4.5c-2.2,0 -4,1.6 -4,4a4,4 0,0 0,4 4,4 4,0 0,0 4,-4c0,-2.4 -1.8,-4 -4,-4zM25.2,10.9c-1.2,0 -2.2,-1 -2.2,-2.4S24,6 25.2,6c1.2,0 2.2,1 2.2,2.5 0,1.4 -1,2.4 -2.2,2.4zM36,5.4a2.8,2.8 0,0 0,-2.1 -1,4 4,0 0,0 0,8c1,0 1.7,-0.4 2,-0.9v0.6c0,1.5 -0.7,2.3 -2,2.3 -1,0 -1.7,-0.8 -2,-1.4l-1.5,0.6c0.4,1 1.6,2.4 3.5,2.4 2,0 3.7,-1.2 3.7,-4.1L37.6,4.7L36,4.7v0.7zM34,10.9c-1.2,0 -2.2,-1 -2.2,-2.4s1,-2.4 2.2,-2.4c1.2,0 2,1 2,2.4 0.1,1.4 -0.8,2.4 -2,2.4zM16.6,4.5c-2.2,0 -4,1.6 -4,4a4,4 0,0 0,4 4,4 4,0 0,0 4,-4 4,4 0,0 0,-4 -4zM16.6,10.9c-1.2,0 -2.2,-1 -2.2,-2.4s1,-2.5 2.2,-2.5 2.2,1 2.2,2.5c0,1.4 -1,2.4 -2.2,2.4zM6.2,5.7v1.6h4a3,3 0,0 1,-0.9 2.2,4 4,0 0,1 -3,1.2c-2.5,0 -4.5,-2 -4.5,-4.5s2,-4.5 4.4,-4.5a4,4 0,0 1,3 1.2l1.3,-1.2A6,6 0,0 0,6.2 0C3,0 0,2.8 0,6.1s2.9,6.2 6.2,6.2c1.8,0 3.2,-0.6 4.3,-1.7a5.6,5.6 0,0 0,1.5 -4l-0.1,-1L6.2,5.6zM48.4,7c-0.3,-1 -1.3,-2.5 -3.3,-2.5 -2,0 -3.7,1.6 -3.7,4 0,2.2 1.6,4 3.9,4a4,4 0,0 0,3.3 -1.8l-1.4,-1c-0.4,0.7 -1,1.2 -2,1.2 -0.8,0 -1.4,-0.4 -1.8,-1.2l5.2,-2.3 -0.2,-0.4zM43.1,8.4C43,6.8 44.3,6 45,6s1.3,0.4 1.5,0.9L43,8.4zM38.7,12.2h1.8L40.5,0.5h-1.8v11.7zM56.6,0.5h-4.2v11.7h1.8L54.2,7.7h2.4c1.9,0 3.8,-1.4 3.8,-3.6S58.5,0.5 56.6,0.5zM56.6,6.1h-2.4v-4h2.4a2,2 0,0 1,2.1 2c0,1 -0.8,2 -2,2zM61.4,12.1L63,12.1L63,0.6h-1.7v11.7zM67.4,4.5c-1.3,0 -2.6,0.5 -3.1,1.7l1.5,0.7c0.4,-0.7 1,-0.9 1.6,-0.9 1,0 1.9,0.6 1.9,1.5v0.1c-0.4,-0.2 -1,-0.4 -1.9,-0.4 -1.6,0 -3.3,0.9 -3.3,2.6 0,1.6 1.3,2.6 2.9,2.6 1.1,0 1.8,-0.5 2.2,-1.2v1L71,12.2L71,7.5c0,-2 -1.5,-3.1 -3.5,-3.1zM67.2,10.9c-0.6,0 -1.4,-0.3 -1.4,-1 0,-1 1,-1.3 1.9,-1.3a3,3 0,0 1,1.6 0.4c-0.2,1 -1.1,1.9 -2.1,1.9zM77,4.7l-2,5 -2,-5h-2l3.2,7 -1.8,4h1.8l4.8,-11h-2z&quot;"
-        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable-v21/google_play.xml"
-            line="13"
-            column="25"/>
     </issue>
 
     <issue
@@ -871,6 +1057,105 @@
             file="src/main/res/values/styles.xml"
             line="14"
             column="12"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX function `createBitmap` instead?"
+        errorLine1="            Bitmap.createBitmap(appIcon.intrinsicWidth, appIcon.intrinsicHeight, Bitmap.Config.ARGB_8888).apply {"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DownloadManager.kt"
+            line="103"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="        val uri = Uri.parse(downloadLink).toString()"
+        errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DownloadManager.kt"
+            line="167"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="    private val CONTENT_URI: Uri = Uri.parse(&quot;content://com.google.android.gsf.gservices&quot;)"
+        errorLine2="                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/GServices.kt"
+            line="8"
+            column="36"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        preferences.edit()"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/android/vending/licensing/LicenseServiceNotification.kt"
+            line="141"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="            Uri.parse(&quot;content://com.google.android.gms.microg.settings/check-in&quot;)"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/android/vending/licensing/LicensingService.kt"
+            line="213"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        val editor = preferences.edit()"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/SettingsManager.kt"
+            line="23"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="            Uri.parse(url).buildUpon().appendQueryParameter(&quot;hl&quot;, language).toString()"
+        errorLine2="            ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/WebViewHelper.kt"
+            line="87"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        prefs.edit().putLong(&quot;${account.name}_last&quot;, System.currentTimeMillis()).apply()"
+        errorLine2="        ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/extensions.kt"
+            line="147"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        val edit = sharedPreferences.edit()"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/extensions.kt"
+            line="161"
+            column="20"/>
     </issue>
 
     <issue

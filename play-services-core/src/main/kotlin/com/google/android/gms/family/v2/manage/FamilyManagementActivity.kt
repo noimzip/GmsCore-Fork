@@ -22,6 +22,7 @@ import com.google.android.gms.family.v2.manage.model.FamilyViewModel
 import com.google.android.gms.family.v2.manage.ui.FamilyActivityScreen
 import kotlinx.coroutines.launch
 import org.microg.gms.profile.ProfileManager
+import androidx.activity.OnBackPressedCallback
 
 class FamilyManagementActivity : AppCompatActivity() {
     private val familyViewModel by viewModels<FamilyViewModel>()
@@ -96,13 +97,14 @@ class FamilyManagementActivity : AppCompatActivity() {
                 executeFamilyGroupByAction(member, callingPackageName, true)
             }
         }
-    }
-
-    override fun onBackPressed() {
-        if (backToManagement()) {
-            return
+        val callback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+              if (backToManagement()) {
+                return
+              }
+            }
         }
-        super.onBackPressed()
+        onBackPressedDispatcher.addCallback(callback)
     }
 
     private fun backToManagement(): Boolean {

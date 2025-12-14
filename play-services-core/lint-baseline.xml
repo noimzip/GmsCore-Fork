@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.8.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.8.2)" variant="all" version="8.8.2">
+<issues format="6" by="lint 8.13.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.13.0)" variant="all" version="8.13.0">
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="                    LocationServices.getFusedLocationProviderClient(context.applicationContext).requestLocationUpdates(locationRequest, it, Looper.getMainLooper())"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/gms/locationsharingreporter/service/LocationSharingUpdate.kt"
+            line="45"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Setting Exact alarms with `setExactAndAllowWhileIdle` requires the `SCHEDULE_EXACT_ALARM` permission or power exemption from user; it is intended for applications where the user knowingly schedules actions to happen at a precise time such as alarms, clocks, calendars, etc. Check out the javadoc on this permission to make sure your use case is valid."
+        errorLine1="            alarmManager.setExactAndAllowWhileIdle(ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + delay, pi);"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/gcm/McsService.java"
+            line="273"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Setting Exact alarms with `setExactAndAllowWhileIdle` requires the `SCHEDULE_EXACT_ALARM` permission or power exemption from user; it is intended for applications where the user knowingly schedules actions to happen at a precise time such as alarms, clocks, calendars, etc. Check out the javadoc on this permission to make sure your use case is valid."
+        errorLine1="            alarmManager.setExactAndAllowWhileIdle(ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + heartbeatMs, heartbeatIntent);"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/gcm/McsService.java"
+            line="289"
+            column="13"/>
+    </issue>
 
     <issue
         id="ScopedStorage"
-        message="WRITE_EXTERNAL_STORAGE no longer provides write access when targeting Android 10, unless you use `requestLegacyExternalStorage`"
+        message="WRITE_EXTERNAL_STORAGE is deprecated (and is not granted) when targeting Android 13+. If you need to write to shared storage, use the `MediaStore.createWriteRequest` intent."
         errorLine1="    &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; />"
         errorLine2="                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -13,14 +46,36 @@
     </issue>
 
     <issue
-        id="DefaultLocale"
-        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`."
-        errorLine1="                    it.first.title.toString().toLowerCase()"
-        errorLine2="                                              ~~~~~~~~~~~">
+        id="ScopedStorage"
+        message="READ_EXTERNAL_STORAGE is deprecated (and is not granted) when targeting Android 13+. If you need to query or interact with MediaStore or media files on the shared storage, you should instead use one or more new storage permissions: `READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO` or `READ_MEDIA_AUDIO`."
+        errorLine1="    &lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot; />"
+        errorLine2="                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/org/microg/gms/ui/PushNotificationAllAppsFragment.kt"
-            line="74"
-            column="47"/>
+            file="src/main/AndroidManifest.xml"
+            line="158"
+            column="36"/>
+    </issue>
+
+    <issue
+        id="GestureBackNavigation"
+        message="If intercepting back events, this should be handled through the registration of callbacks; see https://developer.android.com/guide/navigation/custom-back/predictive-back-gesture"
+        errorLine1="        if ((keyCode == KEYCODE_BACK) &amp;&amp; webView.canGoBack() &amp;&amp; (webView.getVisibility() == VISIBLE)) {"
+        errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
+            line="484"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="GestureBackNavigation"
+        message="`onBackPressed` is no longer called for back gestures; migrate to AndroidX&apos;s backward compatible `OnBackPressedDispatcher`"
+        errorLine1="    override fun onBackPressed() {"
+        errorLine2="                 ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/accountsettings/ui/MainActivity.kt"
+            line="282"
+            column="18"/>
     </issue>
 
     <issue
@@ -47,7 +102,7 @@
 
     <issue
         id="UnusedAttribute"
-        message="Attribute `forceQueryable` is only used in API level 30 and higher (current min is 21)"
+        message="Attribute `forceQueryable` is only used in API level 30 and higher (current min is 26)"
         errorLine1="        android:forceQueryable=&quot;true&quot;"
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -57,14 +112,14 @@
     </issue>
 
     <issue
-        id="UnusedAttribute"
-        message="Attribute `networkSecurityConfig` is only used in API level 24 and higher (current min is 21)"
-        errorLine1="        android:networkSecurityConfig=&quot;@xml/network_security_config&quot;"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        id="AppLinkUrlError"
+        message="Missing data element"
+        errorLine1="            &lt;intent-filter>"
+        errorLine2="            ^">
         <location
             file="src/main/AndroidManifest.xml"
-            line="211"
-            column="9"/>
+            line="895"
+            column="13"/>
     </issue>
 
     <issue
@@ -234,67 +289,12 @@
 
     <issue
         id="GradleDependency"
-        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.1"
-        errorLine1="    implementation &quot;androidx.appcompat:appcompat:$appcompatVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="81"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.mediarouter:mediarouter than 1.6.0 is available: 1.8.1"
-        errorLine1="    implementation &quot;androidx.mediarouter:mediarouter:$mediarouterVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="82"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.preference:preference-ktx than 1.2.0 is available: 1.2.1"
-        errorLine1="    implementation &quot;androidx.preference:preference-ktx:$preferenceVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="83"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.webkit:webkit than 1.10.0 is available: 1.14.0"
-        errorLine1="    implementation &quot;androidx.webkit:webkit:$webkitVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="84"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of com.google.android.material:material than 1.11.0 is available: 1.13.0"
-        errorLine1="    implementation &quot;com.google.android.material:material:$materialVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="87"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
         message="A newer version of androidx.compose:compose-bom than 2024.04.00 is available: 2025.12.00"
         errorLine1="    def composeBom = platform(&apos;androidx.compose:compose-bom:2024.04.00&apos;)"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle"
-            line="90"
+            line="91"
             column="5"/>
     </issue>
 
@@ -305,7 +305,7 @@
         errorLine2="                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle"
-            line="90"
+            line="91"
             column="31"/>
     </issue>
 
@@ -316,52 +316,30 @@
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle"
-            line="95"
+            line="96"
             column="20"/>
     </issue>
 
     <issue
-        id="GradleDependency"
-        message="A newer version of androidx.navigation:navigation-fragment-ktx than 2.7.7 is available: 2.9.6"
-        errorLine1="    implementation &quot;androidx.navigation:navigation-fragment-ktx:$navigationVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        id="NewerVersionAvailable"
+        message="A newer version of de.hdodenhof:circleimageview than 1.3.0 is available: 3.1.0"
+        errorLine1="    implementation &quot;de.hdodenhof:circleimageview:1.3.0&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle"
-            line="98"
+            line="19"
             column="20"/>
     </issue>
 
     <issue
-        id="GradleDependency"
-        message="A newer version of androidx.navigation:navigation-ui-ktx than 2.7.7 is available: 2.9.6"
-        errorLine1="    implementation &quot;androidx.navigation:navigation-ui-ktx:$navigationVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        id="PrivateResource"
+        message="The resource `@color/primary_text_default_material_dark` is marked as private in androidx.appcompat:appcompat:1.7.1"
+        errorLine1="                android:textColor=&quot;@color/primary_text_default_material_dark&quot;"
+        errorLine2="                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="build.gradle"
-            line="99"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.lifecycle:lifecycle-service than 2.7.0 is available: 2.10.0"
-        errorLine1="    implementation &quot;androidx.lifecycle:lifecycle-service:$lifecycleVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="103"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of org.jetbrains.kotlin:kotlin-stdlib-jdk7 than 2.0.21 is available: 2.2.0"
-        errorLine1="    implementation &quot;org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="104"
-            column="20"/>
+            file="src/main/res/layout/login_assistant.xml"
+            line="42"
+            column="36"/>
     </issue>
 
     <issue
@@ -695,13 +673,24 @@
     </issue>
 
     <issue
+        id="UseRequiresApi"
+        message="Use `@RequiresApi(23) instead of `@TargetApi` to propagate the requirement to users of `SystemChecks`"
+        errorLine1="@TargetApi(23)"
+        errorLine2="~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/tools/selfcheck/SystemChecks.java"
+            line="33"
+            column="1"/>
+    </issue>
+
+    <issue
         id="DataBindingWithoutKapt"
         message="If you plan to use data binding in a Kotlin project, you should apply the kotlin-kapt plugin."
         errorLine1="        dataBinding = true"
         errorLine2="        ~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle"
-            line="119"
+            line="123"
             column="9"/>
     </issue>
 
@@ -709,7 +698,7 @@
         id="Typos"
         message="&quot;Albums&quot; is a common misspelling; did you mean &quot;Álbuns&quot;?"
         errorLine1="    &lt;string name=&quot;permission_service_lh2_label&quot;>Picasa Web Albums&lt;/string>"
-        errorLine2="                                                           ^">
+        errorLine2="                                                           ~~~~~~">
         <location
             file="src/main/res/values-pt-rBR/permissions.xml"
             line="34"
@@ -720,7 +709,7 @@
         id="Typos"
         message="&quot;Albums&quot; is a common misspelling; did you mean &quot;Álbuns&quot;?"
         errorLine1="    &lt;string name=&quot;permission_service_lh2_description&quot;>Permite que o app acesse Picasa Web Albums através de qualquer conta do Google associada.&lt;/string>"
-        errorLine2="                                                                                          ^">
+        errorLine2="                                                                                          ~~~~~~">
         <location
             file="src/main/res/values-pt-rBR/permissions.xml"
             line="35"
@@ -731,7 +720,7 @@
         id="Typos"
         message="&quot;Albums&quot; is a common misspelling; did you mean &quot;Álbuns&quot;?"
         errorLine1="    &lt;string name=&quot;permission_service_lh2_label&quot;>Picasa Web Albums&lt;/string>"
-        errorLine2="                                                           ^">
+        errorLine2="                                                           ~~~~~~">
         <location
             file="src/main/res/values-pt/permissions.xml"
             line="37"
@@ -742,7 +731,7 @@
         id="Typos"
         message="&quot;Albums&quot; is a common misspelling; did you mean &quot;Álbuns&quot;?"
         errorLine1="    &lt;string name=&quot;permission_service_lh2_description&quot;>Permite que a app aceda Picasa Web Albums através de qualquer conta do Google associada.&lt;/string>"
-        errorLine2="                                                                                         ^">
+        errorLine2="                                                                                         ~~~~~~">
         <location
             file="src/main/res/values-pt/permissions.xml"
             line="38"
@@ -753,7 +742,7 @@
         id="Typos"
         message="&quot;Fusion&quot; is a common misspelling; did you mean &quot;Fusión&quot;?"
         errorLine1="    &lt;string name=&quot;permission_scope_www.googleapis.com_auth_fusiontables&quot;>Gestionar sus Fusion Tables&lt;/string>"
-        errorLine2="                                                                                       ^">
+        errorLine2="                                                                                       ~~~~~~">
         <location
             file="src/main/res/values-es/permissions.xml"
             line="133"
@@ -764,33 +753,11 @@
         id="Typos"
         message="&quot;Fusion&quot; is a common misspelling; did you mean &quot;Fusión&quot;?"
         errorLine1="    &lt;string name=&quot;permission_scope_www.googleapis.com_auth_fusiontables.readonly&quot;>Ver sus Fusion Tables&lt;/string>"
-        errorLine2="                                                                                          ^">
+        errorLine2="                                                                                          ~~~~~~">
         <location
             file="src/main/res/values-es/permissions.xml"
             line="134"
             column="91"/>
-    </issue>
-
-    <issue
-        id="Typos"
-        message="Repeated word &quot;die&quot; in message: possible typo"
-        errorLine1="    &lt;string name=&quot;pref_vending_asset_device_sync_summary&quot;>Anwendungen, die die Play-Asset-Bereitstellung verwenden, laden zusätzliche Assets auf der Grundlage der Informationen des aktuell verwendeten Geräts herunter.&lt;/string>"
-        errorLine2="                                                                       ^">
-        <location
-            file="src/main/res/values-de/strings.xml"
-            line="274"
-            column="72"/>
-    </issue>
-
-    <issue
-        id="Typos"
-        message="Repeated word &quot;die&quot; in message: possible typo"
-        errorLine1="    &lt;string name=&quot;pref_vending_asset_delivery_summary&quot;>Herunterladen zusätzlicher Assets, wenn diese von Apps, die die Play-Asset-Bereitstellung verwenden, angefordert werden&lt;/string>"
-        errorLine2="                                                                                                               ^">
-        <location
-            file="src/main/res/values-de/strings.xml"
-            line="295"
-            column="112"/>
     </issue>
 
     <issue
@@ -3968,7 +3935,7 @@
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/kotlin/com/google/android/gms/family/v2/manage/FamilyManagementActivity.kt"
-            line="40"
+            line="41"
             column="9"/>
     </issue>
 
@@ -3979,7 +3946,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/kotlin/com/google/android/gms/family/v2/manage/FamilyManagementActivity.kt"
-            line="119"
+            line="121"
             column="13"/>
     </issue>
 
@@ -7873,7 +7840,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="134"
+            line="135"
             column="17"/>
     </issue>
 
@@ -7884,7 +7851,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="150"
+            line="151"
             column="17"/>
     </issue>
 
@@ -7895,7 +7862,7 @@
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="231"
+            line="241"
             column="9"/>
     </issue>
 
@@ -7906,7 +7873,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="370"
+            line="374"
             column="25"/>
     </issue>
 
@@ -7917,7 +7884,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="395"
+            line="399"
             column="13"/>
     </issue>
 
@@ -7928,7 +7895,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="451"
+            line="455"
             column="25"/>
     </issue>
 
@@ -7939,7 +7906,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="473"
+            line="477"
             column="13"/>
     </issue>
 
@@ -7950,7 +7917,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="507"
+            line="511"
             column="13"/>
     </issue>
 
@@ -7961,7 +7928,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="512"
+            line="516"
             column="13"/>
     </issue>
 
@@ -7972,7 +7939,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="517"
+            line="521"
             column="13"/>
     </issue>
 
@@ -7983,7 +7950,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="522"
+            line="526"
             column="13"/>
     </issue>
 
@@ -7994,7 +7961,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="528"
+            line="532"
             column="13"/>
     </issue>
 
@@ -8005,7 +7972,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="533"
+            line="537"
             column="13"/>
     </issue>
 
@@ -8016,7 +7983,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="539"
+            line="543"
             column="13"/>
     </issue>
 
@@ -8027,7 +7994,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="544"
+            line="548"
             column="13"/>
     </issue>
 
@@ -8038,7 +8005,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="551"
+            line="555"
             column="13"/>
     </issue>
 
@@ -8049,7 +8016,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="562"
+            line="566"
             column="13"/>
     </issue>
 
@@ -8060,7 +8027,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="569"
+            line="573"
             column="13"/>
     </issue>
 
@@ -8071,7 +8038,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="596"
+            line="600"
             column="13"/>
     </issue>
 
@@ -8082,7 +8049,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="638"
+            line="642"
             column="13"/>
     </issue>
 
@@ -8093,7 +8060,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="663"
+            line="667"
             column="13"/>
     </issue>
 
@@ -8104,7 +8071,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="668"
+            line="672"
             column="13"/>
     </issue>
 
@@ -8115,7 +8082,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="673"
+            line="677"
             column="13"/>
     </issue>
 
@@ -8126,7 +8093,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="678"
+            line="682"
             column="13"/>
     </issue>
 
@@ -8137,7 +8104,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="684"
+            line="688"
             column="13"/>
     </issue>
 
@@ -8148,7 +8115,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="689"
+            line="693"
             column="13"/>
     </issue>
 
@@ -8159,7 +8126,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="705"
+            line="709"
             column="13"/>
     </issue>
 
@@ -8170,7 +8137,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="710"
+            line="714"
             column="13"/>
     </issue>
 
@@ -8181,7 +8148,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="715"
+            line="719"
             column="13"/>
     </issue>
 
@@ -8192,7 +8159,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="720"
+            line="724"
             column="13"/>
     </issue>
 
@@ -8203,7 +8170,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="725"
+            line="729"
             column="13"/>
     </issue>
 
@@ -8214,7 +8181,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="740"
+            line="744"
             column="13"/>
     </issue>
 
@@ -8225,7 +8192,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="746"
+            line="750"
             column="13"/>
     </issue>
 
@@ -8236,7 +8203,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="751"
+            line="755"
             column="13"/>
     </issue>
 
@@ -12589,22 +12556,6 @@
     </issue>
 
     <issue
-        id="UnsafeIntentLaunch"
-        message="This intent could be coming from an untrusted source. It is later launched by an unprotected component org.microg.gms.checkin.CheckinService. You could either make the component org.microg.gms.checkin.CheckinService protected; or sanitize this intent using androidx.core.content.IntentSanitizer."
-        errorLine1="                        startService((Intent) intent.getParcelableExtra(EXTRA_CALLBACK_INTENT));"
-        errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/org/microg/gms/checkin/CheckinService.java"
-            line="93"
-            column="47"/>
-        <location
-            file="src/main/java/org/microg/gms/checkin/CheckinService.java"
-            line="93"
-            column="25"
-            message="The unsafe intent is launched here."/>
-    </issue>
-
-    <issue
         id="ExportedContentProvider"
         message="Exported content providers can provide access to potentially sensitive data"
         errorLine1="        &lt;provider"
@@ -12633,7 +12584,7 @@
         errorLine2="         ~~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="544"
+            line="551"
             column="10"/>
     </issue>
 
@@ -12644,7 +12595,7 @@
         errorLine2="         ~~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="742"
+            line="751"
             column="10"/>
     </issue>
 
@@ -12655,7 +12606,7 @@
         errorLine2="         ~~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="748"
+            line="757"
             column="10"/>
     </issue>
 
@@ -12666,62 +12617,7 @@
         errorLine2="         ~~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="909"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedReceiver"
-        message="Exported receiver does not require permission"
-        errorLine1="        &lt;receiver"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="349"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedReceiver"
-        message="Exported receiver does not require permission"
-        errorLine1="        &lt;receiver"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="379"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.places.GeoDataService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="255"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.places.PlaceDetectionService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="262"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.checkin.CheckinService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="307"
+            line="922"
             column="10"/>
     </issue>
 
@@ -12732,183 +12628,7 @@
         errorLine2="         ~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="338"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.car.CarService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="428"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.people.PeopleService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="438"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.wearable.WearableService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="459"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.loginservice.GoogleLoginService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="477"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="535"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.credentials.CredentialsService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="558"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.proxy.AuthProxyService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="564"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.appcert.AppCertService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="570"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.credential.CredentialManagerService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="576"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;.locationsharingreporter.service.LocationSharingReporterApiService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="594"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.signin.SignInService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="601"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.signin.AuthSignInService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="608"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.credentials.identity.AuthorizationService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="619"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.credentials.identity.IdentitySignInService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="625"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.folsom.KeyRetrievalService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="631"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="719"
+            line="542"
             column="10"/>
     </issue>
 
@@ -12926,11 +12646,11 @@
     <issue
         id="ExportedService"
         message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.phenotype.PhenotypeService&quot;>"
+        errorLine1="        &lt;service"
         errorLine2="         ~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="914"
+            line="737"
             column="10"/>
     </issue>
 
@@ -12941,18 +12661,7 @@
         errorLine2="         ~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="922"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.potokens.PoTokensService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="947"
+            line="935"
             column="10"/>
     </issue>
 
@@ -12963,7 +12672,7 @@
         errorLine2="         ~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="967"
+            line="980"
             column="10"/>
     </issue>
 
@@ -12974,40 +12683,7 @@
         errorLine2="         ~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="976"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.mdm.NetworkQualityService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="985"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.icing.LightweightIndexService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="992"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.icing.IndexService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="997"
+            line="989"
             column="10"/>
     </issue>
 
@@ -13018,18 +12694,7 @@
         errorLine2="         ~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="1002"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.playlog.PlayLogService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1009"
+            line="1015"
             column="10"/>
     </issue>
 
@@ -13040,139 +12705,7 @@
         errorLine2="         ~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="1014"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.ads.GService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1018"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.feedback.FeedbackService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1050"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.clearcut.ClearcutLoggerService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1069"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.drive.api.DriveApiService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1075"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.reminders.RemindersService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1084"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.wallet.PaymentService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1091"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.firebase.dynamiclinks.DynamicLinksService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1097"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.udc.FacsCacheService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1103"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.usagereporting.UsageReportingService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1109"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.pseudonymous.PseudonymousIdService&quot; >"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1115"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.gass.GassService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1121"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.account.data.AccountDataService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1127"
+            line="1027"
             column="10"/>
     </issue>
 
@@ -13183,7 +12716,7 @@
         errorLine2="         ~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="1133"
+            line="1146"
             column="10"/>
     </issue>
 
@@ -13194,29 +12727,7 @@
         errorLine2="         ~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="1139"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.audit.AuditService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1155"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="ExportedService"
-        message="Exported service does not require permission"
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.common.ClientTelemetryService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1161"
+            line="1152"
             column="10"/>
     </issue>
 
@@ -13227,569 +12738,19 @@
         errorLine2="         ~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="1180"
+            line="1193"
             column="10"/>
     </issue>
 
     <issue
         id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.places.GeoDataService&quot;>"
-        errorLine2="         ~~~~~~~">
+        message="A launchable activity must be exported as of Android 12, which also makes it available to other apps."
+        errorLine1="            android:exported=&quot;false&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="255"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.places.PlaceDetectionService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="262"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.wearable.location.WearableLocationService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="268"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.checkin.CheckinService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="307"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;receiver android:name=&quot;org.microg.gms.checkin.TriggerReceiver&quot;>"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="313"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="338"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;receiver"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="349"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;receiver"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="379"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;receiver"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="391"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;receiver"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="414"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.car.CarService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="428"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.people.PeopleService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="438"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.wearable.WearableService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="459"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;activity"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="465"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.loginservice.GoogleLoginService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="477"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;activity"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="549"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.credentials.CredentialsService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="558"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.proxy.AuthProxyService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="564"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.appcert.AppCertService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="570"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.credential.CredentialManagerService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="576"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;.locationsharingreporter.service.LocationSharingReporterApiService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="594"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.signin.SignInService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="601"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.signin.AuthSignInService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="608"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.credentials.identity.AuthorizationService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="619"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.credentials.identity.IdentitySignInService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="625"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.folsom.KeyRetrievalService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="631"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;activity"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="709"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise. For launcher activities, this should be set to `true`."
-        errorLine1="        &lt;activity-alias"
-        errorLine2="         ~~~~~~~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="784"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;activity-alias"
-        errorLine2="         ~~~~~~~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="808"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;activity"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="895"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.phenotype.PhenotypeService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="914"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.potokens.PoTokensService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="947"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.mdm.NetworkQualityService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="985"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.icing.LightweightIndexService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="992"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.icing.IndexService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="997"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.playlog.PlayLogService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1009"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.ads.GService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1018"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.feedback.FeedbackService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1050"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.clearcut.ClearcutLoggerService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1069"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.drive.api.DriveApiService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1075"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.reminders.RemindersService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1084"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.wallet.PaymentService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1091"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.firebase.dynamiclinks.DynamicLinksService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1097"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.udc.FacsCacheService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1103"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.usagereporting.UsageReportingService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1109"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.pseudonymous.PseudonymousIdService&quot; >"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1115"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.gass.GassService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1121"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.auth.account.data.AccountDataService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1127"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.audit.AuditService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1155"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.common.ClientTelemetryService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1161"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="IntentFilterExportedReceiver"
-        message="As of Android 12, `android:exported` must be set; use `true` to make the activity available to other apps, and `false` otherwise."
-        errorLine1="        &lt;service android:name=&quot;org.microg.gms.DummyService&quot;>"
-        errorLine2="         ~~~~~~~">
-        <location
-            file="src/main/AndroidManifest.xml"
-            line="1184"
-            column="10"/>
+            line="798"
+            column="13"/>
     </issue>
 
     <issue
@@ -13816,13 +12777,24 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="        if (SDK_INT > 19) {"
         errorLine2="            ~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/AccountContentProvider.java"
             line="59"
             column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="                    if (SDK_INT >= 26 &amp;&amp; accounts != null &amp;&amp; arg.equals(DEFAULT_ACCOUNT_TYPE)) {"
+        errorLine2="                        ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/auth/AccountContentProvider.java"
+            line="80"
+            column="25"/>
     </issue>
 
     <issue
@@ -13849,7 +12821,62 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is never &lt; 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="    if (SDK_INT >= 26) {"
+        errorLine2="        ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/accountaction/AccountNotification.kt"
+            line="93"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="            if (SDK_INT >= 26) WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY"
+        errorLine2="                ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/games/utils/AccountPromptManager.kt"
+            line="70"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 26 &amp;&amp; value &amp;&amp; packageName != null) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/auth/AuthManager.java"
+            line="118"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 26 &amp;&amp; packageName != null &amp;&amp; auth != null) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/auth/AuthManager.java"
+            line="216"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 26) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/auth/AuthManagerServiceImpl.java"
+            line="221"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is never &lt; 26"
         errorLine1="        if (SDK_INT &lt; 21) {"
         errorLine2="            ~~~~~~~~~~~~">
         <location
@@ -13860,7 +12887,7 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="            if (SDK_INT >= 21) {"
         errorLine2="                ~~~~~~~~~~~~~">
         <location
@@ -13871,7 +12898,40 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is never &lt; 26"
+        errorLine1="                    if (SDK_INT &lt; 23) return false;"
+        errorLine2="                        ~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/ui/Conditions.java"
+            line="51"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is never &lt; 26"
+        errorLine1="                    if (SDK_INT &lt; 23) return;"
+        errorLine2="                        ~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/ui/Conditions.java"
+            line="60"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="                    if (SDK_INT >= 23) {"
+        errorLine2="                        ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/ui/Conditions.java"
+            line="76"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="        if (SDK_INT >= 21) {"
         errorLine2="            ~~~~~~~~~~~~~">
         <location
@@ -13882,7 +12942,7 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="        if (SDK_INT >= 21) {"
         errorLine2="            ~~~~~~~~~~~~~">
         <location
@@ -13893,7 +12953,40 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="    return if (android.os.Build.VERSION.SDK_INT >= 23) {"
+        errorLine2="               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/cryptauth/CryptAuthFlow.kt"
+            line="148"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 24"
+        errorLine1="    @RequiresApi(24)"
+        errorLine2="    ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/google/android/gms/chimera/container/DynamiteContext.java"
+            line="56"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 23 &amp;&amp; Process.is64Bit()) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/google/android/gms/chimera/DynamiteContextFactory.java"
+            line="84"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="        } else if (SDK_INT >= 21) {"
         errorLine2="                   ~~~~~~~~~~~~~">
         <location
@@ -13904,7 +12997,7 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="            if (SDK_INT >= 21) {"
         errorLine2="                ~~~~~~~~~~~~~">
         <location
@@ -13915,7 +13008,7 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="            if (SDK_INT >= 21) {"
         errorLine2="                ~~~~~~~~~~~~~">
         <location
@@ -13926,7 +13019,7 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="            if (SDK_INT >= 21) {"
         errorLine2="                ~~~~~~~~~~~~~">
         <location
@@ -13937,7 +13030,7 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="            if (SDK_INT >= 21) UsbTransportHandler(activity, this) else null,"
         errorLine2="                ~~~~~~~~~~~~~">
         <location
@@ -13948,7 +13041,18 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="            if (SDK_INT >= 23) ScreenLockTransportHandler(activity, this) else null"
+        errorLine2="                ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/auth/login/FidoHandler.kt"
+            line="38"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="        if (SDK_INT >= 19) {"
         errorLine2="            ~~~~~~~~~~~~~">
         <location
@@ -13959,7 +13063,7 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="        if (SDK_INT >= 16) {"
         errorLine2="            ~~~~~~~~~~~~~">
         <location
@@ -13970,7 +13074,7 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="    val isPowerSaveMode = if (SDK_INT >= 21) {"
         errorLine2="                              ~~~~~~~~~~~~~">
         <location
@@ -13981,62 +13085,117 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is never &lt; 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="                if (isAuthVisible(this) &amp;&amp; SDK_INT >= 26) {"
+        errorLine2="                                           ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
+            line="187"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is never &lt; 26"
         errorLine1="        } else if (android.os.Build.VERSION.SDK_INT &lt; 21 || isReAuth) {"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="193"
+            line="194"
             column="20"/>
     </issue>
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="        if (SDK_INT >= 21) { finishAndRemoveTask(); } else finish();"
         errorLine2="            ~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="236"
+            line="246"
             column="13"/>
     </issue>
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="        if (SDK_INT >= 21) {"
         errorLine2="            ~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="254"
+            line="258"
             column="13"/>
     </issue>
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is never &lt; 21"
+        message="Unnecessary; `SDK_INT` is never &lt; 26"
         errorLine1="        if (SDK_INT &lt; 21) {"
         errorLine2="            ~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="265"
+            line="269"
             column="13"/>
     </issue>
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="                        if (isAuthVisible(LoginActivity.this) &amp;&amp; SDK_INT >= 26) {"
+        errorLine2="                                                                 ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
+            line="444"
+            column="66"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="                        if (SDK_INT >= 21) { finishAndRemoveTask(); } else finish();"
         errorLine2="                            ~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/microg/gms/auth/login/LoginActivity.java"
-            line="446"
+            line="450"
             column="29"/>
     </issue>
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT >= 19` is never true here (`SDK_INT` ≥ 21 and &lt; 23)"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 23 &amp;&amp; checkSelfPermission(&quot;android.permission.CHANGE_DEVICE_IDLE_TEMP_WHITELIST&quot;) == PackageManager.PERMISSION_GRANTED) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/gcm/McsService.java"
+            line="183"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 23) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/gcm/McsService.java"
+            line="272"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 23) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/gcm/McsService.java"
+            line="287"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT >= 19` is never true here"
         errorLine1="        } else if (SDK_INT >= 19) {"
         errorLine2="                   ~~~~~~~~~~~~~">
         <location
@@ -14047,7 +13206,18 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT >= 23` is always true here (`SDK_INT` ≥ 26 and &lt; 31)"
+        errorLine1="        } else if (SDK_INT >= 23) {"
+        errorLine2="                   ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/gcm/McsService.java"
+            line="636"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="            if (SDK_INT >= 21)"
         errorLine2="                ~~~~~~~~~~~~~">
         <location
@@ -14058,7 +13228,62 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 23) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/ui/SelfCheckFragment.java"
+            line="66"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 23) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/ui/SelfCheckFragment.java"
+            line="121"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 23"
+        errorLine1="@TargetApi(23)"
+        errorLine2="~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/tools/selfcheck/SystemChecks.java"
+            line="33"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 24 &amp;&amp; !registered) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/gcm/TriggerReceiver.java"
+            line="46"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="                } else if (SDK_INT >= 23) {"
+        errorLine2="                           ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/checkin/TriggerReceiver.java"
+            line="59"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="                if (SDK_INT >= 21) {"
         errorLine2="                    ~~~~~~~~~~~~~">
         <location
@@ -14069,7 +13294,7 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="                if (SDK_INT >= 21) {"
         errorLine2="                    ~~~~~~~~~~~~~">
         <location
@@ -14080,7 +13305,7 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 21"
+        message="Unnecessary; `SDK_INT` is always >= 26"
         errorLine1="                if (SDK_INT >= 21) {"
         errorLine2="                    ~~~~~~~~~~~~~">
         <location
@@ -14091,23 +13316,37 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="This folder configuration (`v21`) is unnecessary; `minSdkVersion` is 21. Merge all the resources in this folder into `drawable-anydpi`.">
+        message="This folder configuration (`v21`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `drawable-anydpi`.">
         <location
             file="src/main/res/drawable-anydpi-v21"/>
     </issue>
 
     <issue
         id="ObsoleteSdkInt"
-        message="This folder configuration (`v21`) is unnecessary; `minSdkVersion` is 21. Merge all the resources in this folder into `drawable`.">
+        message="This folder configuration (`v21`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `drawable`.">
         <location
             file="src/main/res/drawable-v21"/>
     </issue>
 
     <issue
         id="ObsoleteSdkInt"
-        message="This folder configuration (`v21`) is unnecessary; `minSdkVersion` is 21. Merge all the resources in this folder into `layout`.">
+        message="This folder configuration (`v23`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `drawable`.">
+        <location
+            file="src/main/res/drawable-v23"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v21`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `layout`.">
         <location
             file="src/main/res/layout-v21"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `mipmap-anydpi`.">
+        <location
+            file="src/main/res/mipmap-anydpi-v26"/>
     </issue>
 
     <issue
@@ -14123,9 +13362,23 @@
 
     <issue
         id="ObsoleteSdkInt"
-        message="This folder configuration (`v8`) is unnecessary; `minSdkVersion` is 21. Merge all the resources in this folder into `values-night`.">
+        message="This folder configuration (`v8`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `values-night`.">
         <location
             file="src/main/res/values-night-v8"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v23`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `values`.">
+        <location
+            file="src/main/res/values-v23"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `values`.">
+        <location
+            file="src/main/res/values-v26"/>
     </issue>
 
     <issue
@@ -14137,39 +13390,6 @@
             file="src/main/res/layout/item_achievements_counter.xml"
             line="2"
             column="2"/>
-    </issue>
-
-    <issue
-        id="VectorPath"
-        message="Very long vector path (811 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
-        errorLine1="            android:pathData=&quot;M19.14,12.94c0.04,-0.3 0.06,-0.61 0.06,-0.94c0,-0.32 -0.02,-0.64 -0.07,-0.94l2.03,-1.58c0.18,-0.14 0.23,-0.41 0.12,-0.61l-1.92,-3.32c-0.12,-0.22 -0.37,-0.29 -0.59,-0.22l-2.39,0.96c-0.5,-0.38 -1.03,-0.7 -1.62,-0.94L14.4,2.81c-0.04,-0.24 -0.24,-0.41 -0.48,-0.41h-3.84c-0.24,0 -0.43,0.17 -0.47,0.41L9.25,5.35C8.66,5.59 8.12,5.92 7.63,6.29L5.24,5.33c-0.22,-0.08 -0.47,0 -0.59,0.22L2.74,8.87C2.62,9.08 2.66,9.34 2.86,9.48l2.03,1.58C4.84,11.36 4.8,11.69 4.8,12s0.02,0.64 0.07,0.94l-2.03,1.58c-0.18,0.14 -0.23,0.41 -0.12,0.61l1.92,3.32c0.12,0.22 0.37,0.29 0.59,0.22l2.39,-0.96c0.5,0.38 1.03,0.7 1.62,0.94l0.36,2.54c0.05,0.24 0.24,0.41 0.48,0.41h3.84c0.24,0 0.44,-0.17 0.47,-0.41l0.36,-2.54c0.59,-0.24 1.13,-0.56 1.62,-0.94l2.39,0.96c0.22,0.08 0.47,0 0.59,-0.22l1.92,-3.32c0.12,-0.22 0.07,-0.47 -0.12,-0.61L19.14,12.94z&quot; />"
-        errorLine2="                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable-v21/ic_app_settings_foreground.xml"
-            line="18"
-            column="31"/>
-    </issue>
-
-    <issue
-        id="VectorPath"
-        message="Very long vector path (811 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
-        errorLine1="            android:pathData=&quot;M19.14,12.94c0.04,-0.3 0.06,-0.61 0.06,-0.94c0,-0.32 -0.02,-0.64 -0.07,-0.94l2.03,-1.58c0.18,-0.14 0.23,-0.41 0.12,-0.61l-1.92,-3.32c-0.12,-0.22 -0.37,-0.29 -0.59,-0.22l-2.39,0.96c-0.5,-0.38 -1.03,-0.7 -1.62,-0.94L14.4,2.81c-0.04,-0.24 -0.24,-0.41 -0.48,-0.41h-3.84c-0.24,0 -0.43,0.17 -0.47,0.41L9.25,5.35C8.66,5.59 8.12,5.92 7.63,6.29L5.24,5.33c-0.22,-0.08 -0.47,0 -0.59,0.22L2.74,8.87C2.62,9.08 2.66,9.34 2.86,9.48l2.03,1.58C4.84,11.36 4.8,11.69 4.8,12s0.02,0.64 0.07,0.94l-2.03,1.58c-0.18,0.14 -0.23,0.41 -0.12,0.61l1.92,3.32c0.12,0.22 0.37,0.29 0.59,0.22l2.39,-0.96c0.5,0.38 1.03,0.7 1.62,0.94l0.36,2.54c0.05,0.24 0.24,0.41 0.48,0.41h3.84c0.24,0 0.44,-0.17 0.47,-0.41l0.36,-2.54c0.59,-0.24 1.13,-0.56 1.62,-0.94l2.39,0.96c0.22,0.08 0.47,0 0.59,-0.22l1.92,-3.32c0.12,-0.22 0.07,-0.47 -0.12,-0.61L19.14,12.94z&quot; />"
-        errorLine2="                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable-v21/ic_app_settings_foreground_mono.xml"
-            line="19"
-            column="31"/>
-    </issue>
-
-    <issue
-        id="VectorPath"
-        message="Very long vector path (1190 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
-        errorLine1="        android:fillColor=&quot;#ffffffff&quot; android:pathData=&quot;M207.03481 139.53168c0.42667 -3.41333 0.74667 -6.82666 0.74667 -10.45333 0 -3.62667 -0.32 -7.04 -0.74667 -10.45333l22.50667 -17.6c2.02667 -1.599996 2.56 -4.479996 1.28 -6.826666L209.48815 57.291687c-1.28 -2.346666 -4.16 -3.2 -6.50667 -2.346666l-26.56 10.666666c-5.54667 -4.266666 -11.52 -7.786666 -18.02667 -10.453333l-4.05333 -28.266667c-0.32 -2.56 -2.56 -4.48 -5.22667 -4.48h-42.66666c-2.66667 0 -4.90667 1.92 -5.22667 4.48l-4.053331 28.266667c-6.50667 2.666667 -12.48 6.293333 -18.02667 10.453333l-26.56 -10.666666c-2.45333 -0.96 -5.22667 0 -6.50667 2.346666l-21.33333 36.906667c-1.38667 2.34667 -0.74667 5.22667 1.28 6.826666l22.50667 17.6c-0.42667 3.41333 -0.74667 6.93333 -0.74667 10.45333 0 3.52 0.32 7.04 0.74667 10.45333l-22.50667 17.6c-2.02667 1.6 -2.56 4.48 -1.28 6.82667l21.33333 36.90667c1.28 2.34666 4.16 3.2 6.50667 2.34666l26.56 -10.66666c5.54667 4.26666 11.52 7.78666 18.02667 10.45333l4.053331 28.26667c0.32 2.56 2.56 4.48 5.22667 4.48h42.66666c2.66667 0 4.90667 -1.92 5.22667 -4.48l4.05333 -28.26667c6.50667 -2.66667 12.48 -6.29333 18.02667 -10.45333l26.56 10.66666c2.45333 0.96 5.22667 0 6.50667 -2.34666l21.33333 -36.90667c1.28 -2.34667 0.74667 -5.22667 -1.28 -6.82667z&quot;>"
-        errorLine2="                                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable-anydpi-v21/microg_light_color_24.xml"
-            line="7"
-            column="57"/>
     </issue>
 
     <issue
@@ -16625,6 +15845,215 @@
     </issue>
 
     <issue
+        id="UseKtx"
+        message="Use the KTX extension function `Bitmap.scale` instead?"
+        errorLine1="            Bitmap.createScaledBitmap(bitmap, 100, 100, true)"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/ui/AccountsFragment.kt"
+            line="64"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="                val linkUri = Uri.parse(link)"
+        errorLine2="                              ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/firebase/dynamiclinks/DynamicLinksService.kt"
+            line="58"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="                callback.onStatusShortDynamicLink(Status.SUCCESS, ShortDynamicLinkImpl(shortLink.let { Uri.parse(it) }, previewLink.let { Uri.parse(it) }, warningList))"
+        errorLine2="                                                                                                       ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/firebase/dynamiclinks/DynamicLinksService.kt"
+            line="125"
+            column="104"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="                callback.onStatusShortDynamicLink(Status.SUCCESS, ShortDynamicLinkImpl(shortLink.let { Uri.parse(it) }, previewLink.let { Uri.parse(it) }, warningList))"
+        errorLine2="                                                                                                                                          ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/firebase/dynamiclinks/DynamicLinksService.kt"
+            line="125"
+            column="139"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        val editor: SharedPreferences.Editor = preferences.edit()"
+        errorLine2="                                               ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/games/GamesConfigurationService.kt"
+            line="128"
+            column="48"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        val editor: SharedPreferences.Editor = preferences.edit()"
+        errorLine2="                                               ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/games/GamesConfigurationService.kt"
+            line="149"
+            column="48"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="                        sp?.edit()?.putString(KEY_GCM_REG_ACCOUNT_LIST, saveStr)?.apply()"
+        errorLine2="                        ~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/gcm/GcmInGmsService.kt"
+            line="324"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="            val targetIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))"
+        errorLine2="                                                          ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/googlehelp/ui/GoogleHelpRedirectActivity.kt"
+            line="68"
+            column="59"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="private val ACCOUNT_CHOOSER_URI = Uri.parse(&quot;https://accounts.google.com/AccountChooser&quot;)"
+        errorLine2="                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/accountsettings/ui/LoaderActivity.kt"
+            line="24"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="                val lang = Uri.parse(fallbackUrl).getQueryParameter(QUERY_PARAM_LANG)"
+        errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/accountsettings/ui/LoaderActivity.kt"
+            line="55"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="                Uri.parse(fallbackUrl)"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/accountsettings/ui/LoaderActivity.kt"
+            line="61"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="        val targetIntent = Intent(Intent.ACTION_VIEW, Uri.parse(PSW_MANAGER_PATH))"
+        errorLine2="                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/gms/credential/manager/PasswordManagerActivity.kt"
+            line="27"
+            column="55"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        sp.edit().putString(KEY_USED_INTEGRITY_TOKEN_INFO, info.toJsonStr()).apply()"
+        errorLine2="        ~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/potokens/PoTokenStore.kt"
+            line="25"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        sp.edit().putLong(KEY_PO_TOKEN_ACCESSED_TIME, System.currentTimeMillis()).apply()"
+        errorLine2="        ~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/potokens/PoTokenStore.kt"
+            line="41"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        sp.edit().putBoolean(KEY_PO_TOKEN_INTERVAL_FLAG, flag).apply()"
+        errorLine2="        ~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/potokens/PoTokenStore.kt"
+            line="49"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        val editor: SharedPreferences.Editor = preferences.edit()"
+        errorLine2="                                               ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/auth/signin/SignInConfigurationService.kt"
+            line="105"
+            column="48"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="        val uri = Uri.parse(url)"
+        errorLine2="                  ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/accountsettings/ui/extensions.kt"
+            line="69"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="        photoUrl?.let { Uri.parse(it) },"
+        errorLine2="                        ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/auth/signin/extensions.kt"
+            line="178"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="    val uriBuilder = Uri.parse(url).buildUpon().apply {"
+        errorLine2="                     ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/games/extensions.kt"
+            line="202"
+            column="22"/>
+    </issue>
+
+    <issue
         id="ContentDescription"
         message="Missing `contentDescription` attribute on image"
         errorLine1="        &lt;ImageView"
@@ -16823,17 +16252,6 @@
     </issue>
 
     <issue
-        id="KeyboardInaccessibleWidget"
-        message="&apos;clickable&apos; attribute found, please also add &apos;focusable&apos;"
-        errorLine1="        android:clickable=&quot;true&quot;"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/layout/pick_place.xml"
-            line="48"
-            column="9"/>
-    </issue>
-
-    <issue
         id="HardcodedText"
         message="Hardcoded string &quot;(0.0000000, 0.0000000)&quot;, should use `@string` resource"
         errorLine1="                android:text=&quot;(0.0000000, 0.0000000)&quot;"
@@ -16945,7 +16363,7 @@
 
     <issue
         id="RtlHardcoded"
-        message="Redundant attribute `layout_marginRight`; already defining `layout_marginEnd` with `targetSdkVersion` 21"
+        message="Redundant attribute `layout_marginRight`; already defining `layout_marginEnd` with `targetSdkVersion` 26"
         errorLine1="            android:layout_marginRight=&quot;-3dp&quot;"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -16956,7 +16374,7 @@
 
     <issue
         id="RtlHardcoded"
-        message="Redundant attribute `layout_marginLeft`; already defining `layout_marginStart` with `targetSdkVersion` 21"
+        message="Redundant attribute `layout_marginLeft`; already defining `layout_marginStart` with `targetSdkVersion` 26"
         errorLine1="            android:layout_marginLeft=&quot;-3dp&quot;"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -16967,7 +16385,7 @@
 
     <issue
         id="RtlHardcoded"
-        message="Redundant attribute `layout_marginRight`; already defining `layout_marginEnd` with `targetSdkVersion` 21"
+        message="Redundant attribute `layout_marginRight`; already defining `layout_marginEnd` with `targetSdkVersion` 26"
         errorLine1="            android:layout_marginRight=&quot;-3dp&quot;"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -16978,7 +16396,7 @@
 
     <issue
         id="RtlHardcoded"
-        message="Redundant attribute `layout_marginLeft`; already defining `layout_marginStart` with `targetSdkVersion` 21"
+        message="Redundant attribute `layout_marginLeft`; already defining `layout_marginStart` with `targetSdkVersion` 26"
         errorLine1="            android:layout_marginLeft=&quot;-3dp&quot;"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -17000,7 +16418,7 @@
 
     <issue
         id="RtlHardcoded"
-        message="Redundant attribute `layout_alignParentLeft`; already defining `layout_alignParentStart` with `targetSdkVersion` 21"
+        message="Redundant attribute `layout_alignParentLeft`; already defining `layout_alignParentStart` with `targetSdkVersion` 26"
         errorLine1="                android:layout_alignParentLeft=&quot;true&quot;"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -17011,7 +16429,7 @@
 
     <issue
         id="RtlHardcoded"
-        message="Redundant attribute `layout_alignParentRight`; already defining `layout_alignParentEnd` with `targetSdkVersion` 21"
+        message="Redundant attribute `layout_alignParentRight`; already defining `layout_alignParentEnd` with `targetSdkVersion` 26"
         errorLine1="                android:layout_alignParentRight=&quot;true&quot;"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -17033,7 +16451,7 @@
 
     <issue
         id="RtlHardcoded"
-        message="Redundant attribute `paddingLeft`; already defining `paddingStart` with `targetSdkVersion` 21"
+        message="Redundant attribute `paddingLeft`; already defining `paddingStart` with `targetSdkVersion` 26"
         errorLine1="    android:paddingLeft=&quot;?attr/listPreferredItemPaddingLeft&quot;"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~">
         <location
@@ -17044,7 +16462,7 @@
 
     <issue
         id="RtlHardcoded"
-        message="Redundant attribute `paddingRight`; already defining `paddingEnd` with `targetSdkVersion` 21"
+        message="Redundant attribute `paddingRight`; already defining `paddingEnd` with `targetSdkVersion` 26"
         errorLine1="    android:paddingRight=&quot;?attr/listPreferredItemPaddingRight&quot;"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -17055,7 +16473,7 @@
 
     <issue
         id="RtlHardcoded"
-        message="Redundant attribute `layout_marginRight`; already defining `layout_marginEnd` with `targetSdkVersion` 21"
+        message="Redundant attribute `layout_marginRight`; already defining `layout_marginEnd` with `targetSdkVersion` 26"
         errorLine1="            android:layout_marginRight=&quot;24dp&quot;"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -17066,7 +16484,7 @@
 
     <issue
         id="RtlHardcoded"
-        message="Redundant attribute `layout_marginLeft`; already defining `layout_marginStart` with `targetSdkVersion` 21"
+        message="Redundant attribute `layout_marginLeft`; already defining `layout_marginStart` with `targetSdkVersion` 26"
         errorLine1="            android:layout_marginLeft=&quot;12dp&quot;"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -17077,7 +16495,7 @@
 
     <issue
         id="RtlHardcoded"
-        message="Redundant attribute `layout_marginLeft`; already defining `layout_marginStart` with `targetSdkVersion` 21"
+        message="Redundant attribute `layout_marginLeft`; already defining `layout_marginStart` with `targetSdkVersion` 26"
         errorLine1="                    android:layout_marginLeft=&quot;8dp&quot;"
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location

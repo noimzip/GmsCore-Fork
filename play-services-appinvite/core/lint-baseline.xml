@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.8.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.8.2)" variant="all" version="8.8.2">
+<issues format="6" by="lint 8.13.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.13.0)" variant="all" version="8.13.0">
 
     <issue
-        id="UnusedAttribute"
-        message="Attribute `autoVerify` is only used in API level 23 and higher (current min is 21)"
-        errorLine1="                android:autoVerify=&quot;true&quot;>"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        id="QueryPermissionsNeeded"
+        message="Consider adding a `&lt;queries>` declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details"
+        errorLine1="            val componentName = intent.resolveActivity(packageManager)"
+        errorLine2="                                       ~~~~~~~~~~~~~~~">
         <location
-            file="src/main/AndroidManifest.xml"
-            line="27"
-            column="17"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.1"
-        errorLine1="    implementation &quot;androidx.appcompat:appcompat:$appcompatVersion&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="14"
-            column="20"/>
+            file="src/main/kotlin/org/microg/gms/appinivite/AppInviteActivity.kt"
+            line="101"
+            column="40"/>
     </issue>
 
     <issue
@@ -32,6 +21,61 @@
             file="src/main/AndroidManifest.xml"
             line="10"
             column="10"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        headers[&quot;Accept-Language&quot;] = if (SDK_INT >= 24) LocaleList.getDefault().toLanguageTags() else Locale.getDefault().language"
+        errorLine2="                                         ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/appinivite/utils/DynamicLinkUtils.kt"
+            line="113"
+            column="42"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="            data = appInviteLink.data_?.intentData?.let { Uri.parse(it) }"
+        errorLine2="                                                          ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/appinivite/AppInviteActivity.kt"
+            line="77"
+            column="59"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="            data = appInviteLink.data_?.intentData?.let { Uri.parse(it) }"
+        errorLine2="                                                          ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/appinivite/AppInviteActivity.kt"
+            line="77"
+            column="59"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="            data = appInviteLink.data_?.fallbackUrl?.let { Uri.parse(it) }"
+        errorLine2="                                                           ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/appinivite/AppInviteActivity.kt"
+            line="91"
+            column="60"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="            data = appInviteLink.data_?.fallbackUrl?.let { Uri.parse(it) }"
+        errorLine2="                                                           ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/gms/appinivite/AppInviteActivity.kt"
+            line="91"
+            column="60"/>
     </issue>
 
 </issues>

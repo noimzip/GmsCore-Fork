@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.13.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.13.0)" variant="all" version="8.13.0">
+
+    <issue
+        id="QueryPermissionsNeeded"
+        message="Consider adding a `&lt;queries>` declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details"
+        errorLine1="        for (ResolveInfo resolveInfo : packageManager.queryIntentServices(new Intent(ACTION_C2DM_REGISTER), 0)) {"
+        errorLine2="                                                      ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/iid/InstanceIdRpc.java"
+            line="110"
+            column="55"/>
+    </issue>
+
+    <issue
+        id="UnspecifiedRegisterReceiverFlag"
+        message="`registrationReceiver` is missing `RECEIVER_EXPORTED` or `RECEIVER_NOT_EXPORTED` flag for unprotected broadcasts registered for com.google.android.c2dm.intent.REGISTRATION"
+        errorLine1="        registerReceiver(registrationReceiver, filter);"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/google/android/gms/iid/InstanceIDListenerService.java"
+            line="86"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.collection:collection than 1.0.0 is available: 1.5.0"
+        errorLine1="    api &quot;androidx.collection:collection:1.0.0&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="36"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core than 1.0.0 is available: 1.17.0"
+        errorLine1="    api &quot;androidx.core:core:1.0.0&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="37"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 21) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/google/android/gms/iid/MessengerCompat.java"
+            line="35"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 26"
+        errorLine1="        if (SDK_INT >= 21) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/google/android/gms/iid/MessengerCompat.java"
+            line="43"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="Do not place Android context classes in static fields (static reference to `InstanceIdStore` which has field `context` pointing to `Context`); this is a memory leak"
+        errorLine1="    private static InstanceIdStore storeInstance;"
+        errorLine2="            ~~~~~~">
+        <location
+            file="src/main/java/com/google/android/gms/iid/InstanceID.java"
+            line="94"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="Do not place Android context classes in static fields (static reference to `InstanceIdRpc` which has field `context` pointing to `Context`); this is a memory leak"
+        errorLine1="    private static InstanceIdRpc rpc;"
+        errorLine2="            ~~~~~~">
+        <location
+            file="src/main/java/com/google/android/gms/iid/InstanceID.java"
+            line="95"
+            column="13"/>
+    </issue>
+
+</issues>

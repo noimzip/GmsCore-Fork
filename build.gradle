@@ -7,37 +7,37 @@ buildscript {
     ext.cronetVersion = '102.5005.125'
     ext.wearableVersion = '0.1.1'
 
-    ext.kotlinVersion = '1.9.22'
-    ext.coroutineVersion = '1.7.3'
+    ext.kotlinVersion = '2.2.21'
+    ext.coroutineVersion = '1.10.2'
 
-    ext.annotationVersion = '1.7.1'
-    ext.appcompatVersion = '1.6.1'
+    ext.annotationVersion = '1.9.1'
+    ext.appcompatVersion = '1.7.1'
     ext.biometricVersion = '1.1.0'
-    ext.coreVersion = '1.12.0'
-    ext.fragmentVersion = '1.6.2'
-    ext.lifecycleVersion = '2.7.0'
+    ext.coreVersion = '1.17.0'
+    ext.fragmentVersion = '1.8.9'
+    ext.lifecycleVersion = '2.10.0'
     ext.loaderVersion = '1.1.0'
-    ext.materialVersion = '1.14.0-alpha01'
-    ext.mediarouterVersion = '1.6.0'
+    ext.materialVersion = '1.14.0-alpha07'
+    ext.mediarouterVersion = '1.8.1'
     ext.multidexVersion = '2.0.1'
-    ext.navigationVersion = '2.7.7'
-    ext.preferenceVersion = '1.2.0'
-    ext.recyclerviewVersion = '1.3.2'
-    ext.webkitVersion = '1.10.0'
+    ext.navigationVersion = '2.9.6'
+    ext.preferenceVersion = '1.2.1'
+    ext.recyclerviewVersion = '1.4.0'
+    ext.webkitVersion = '1.14.0'
 
-    ext.slf4jVersion = '1.7.36'
+    ext.slf4jVersion = '2.0.17'
     ext.volleyVersion = '1.2.1'
     ext.okHttpVersion = '4.12.0'
     ext.ktorVersion = '2.3.12'
-    ext.wireVersion = '4.9.9'
-    ext.tinkVersion = '1.13.0'
+    ext.wireVersion = '5.4.0'
+    ext.tinkVersion = '1.20.0'
 
-    ext.androidBuildGradleVersion = '8.8.2'
+    ext.androidBuildGradleVersion = '8.13.0'
 
-    ext.androidBuildVersionTools = '35.0.0'
+    ext.androidBuildVersionTools = '36.0.0'
 
-    ext.androidMinSdk = 21
-    ext.androidTargetSdk = 29
+    ext.androidMinSdk = 26
+    ext.androidTargetSdk = 36
     ext.androidCompileSdk = 36
 
     ext.localProperties = new Properties()
@@ -61,7 +61,7 @@ buildscript {
 
     dependencies {
         classpath "com.android.tools.build:gradle:$androidBuildGradleVersion"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin:$kotlinVersion"
         classpath "com.squareup.wire:wire-gradle-plugin:$wireVersion"
     }
 }
@@ -73,7 +73,7 @@ def execResult(... args) {
 def ignoreGit = providers.environmentVariable('GRADLE_MICROG_VERSION_WITHOUT_GIT').getOrElse('0') == '1'
 def gmsVersion = "25.49.32"
 def gmsVersionCode = Integer.parseInt(gmsVersion.replaceAll('\\.', ''))
-def vendingVersion = "49.1.32"
+def vendingVersion = "49.1.33"
 def vendingVersionCode = Integer.parseInt(vendingVersion.replaceAll('\\.', ''))
 def gitVersionBase = !ignoreGit ? execResult('git', 'describe', '--tags', '--abbrev=0', '--match=v[0-9]*').trim().substring(1) : "v0.0.0.$gmsVersionCode"
 def gitCommitCount = !ignoreGit ? Integer.parseInt(execResult('git', 'rev-list', '--count', "v$gitVersionBase..HEAD").trim()) : 0
@@ -122,4 +122,3 @@ subprojects {
         if (hasModule("hms", false)) maven {url 'https://developer.huawei.com/repo/'}
     }
 }
-

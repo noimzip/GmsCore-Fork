@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.13.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.13.0)" variant="all" version="8.13.0">
+
+    <issue
+        id="QueryPermissionsNeeded"
+        message="Consider adding a `&lt;queries>` declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details"
+        errorLine1="        for (ResolveInfo resolveInfo : packageManager.queryIntentServices(new Intent(ACTION_C2DM_REGISTER), 0)) {"
+        errorLine2="                                                      ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/gms/gcm/CloudMessagingRpc.java"
+            line="90"
+            column="55"/>
+    </issue>
+
+    <issue
+        id="QueryPermissionsNeeded"
+        message="Consider adding a `&lt;queries>` declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details"
+        errorLine1="        List&lt;ResolveInfo> serviceResolves = pm.queryIntentServices(taskIntent, 0);"
+        errorLine2="                                               ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/google/android/gms/gcm/GcmNetworkManager.java"
+            line="236"
+            column="48"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.collection:collection than 1.0.0 is available: 1.5.0"
+        errorLine1="    api &quot;androidx.collection:collection:1.0.0&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="32"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core than 1.0.0 is available: 1.17.0"
+        errorLine1="    api &quot;androidx.core:core:1.0.0&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="33"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UnspecifiedImmutableFlag"
+        message="Missing `PendingIntent` mutability flag"
+        errorLine1="            selfAuthIntent = PendingIntent.getBroadcast(context, 0, intent, 0);"
+        errorLine2="                                                                            ~">
+        <location
+            file="src/main/java/org/microg/gms/gcm/CloudMessagingRpc.java"
+            line="120"
+            column="77"/>
+    </issue>
+
+    <issue
+        id="UnspecifiedImmutableFlag"
+        message="Missing `PendingIntent` mutability flag"
+        errorLine1="        scheduleIntent.putExtra(&quot;app&quot;, PendingIntent.getBroadcast(context, 0, new Intent(), 0));"
+        errorLine2="                                                                                            ~">
+        <location
+            file="src/main/java/com/google/android/gms/gcm/GcmNetworkManager.java"
+            line="217"
+            column="93"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is never &lt; 26"
+        errorLine1="        if (SDK_INT &lt; 19) {"
+        errorLine2="            ~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/google/android/gms/gcm/GcmReceiver.java"
+            line="72"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="This `AsyncTask` class should be static or leaks might occur (anonymous android.os.AsyncTask)"
+        errorLine1="                new AsyncTask&lt;Void, Void, Void>() {"
+        errorLine2="                ^">
+        <location
+            file="src/main/java/com/google/android/gms/gcm/GcmListenerService.java"
+            line="128"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="Do not place Android context classes in static fields (static reference to `GcmNetworkManager` which has field `context` pointing to `Context`); this is a memory leak"
+        errorLine1="    private static GcmNetworkManager INSTANCE;"
+        errorLine2="            ~~~~~~">
+        <location
+            file="src/main/java/com/google/android/gms/gcm/GcmNetworkManager.java"
+            line="133"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="Do not place Android context classes in static fields (static reference to `GoogleCloudMessaging` which has field `context` pointing to `Context`); this is a memory leak"
+        errorLine1="    private static GoogleCloudMessaging instance;"
+        errorLine2="            ~~~~~~">
+        <location
+            file="src/main/java/com/google/android/gms/gcm/GoogleCloudMessaging.java"
+            line="124"
+            column="13"/>
+    </issue>
+
+</issues>

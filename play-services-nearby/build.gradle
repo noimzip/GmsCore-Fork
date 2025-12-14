@@ -17,6 +17,10 @@ android {
         aidl = true
     }
 
+    lint {
+          baseline = file("lint-baseline.xml")
+    }
+
     defaultConfig {
         versionName version
         minSdkVersion androidMinSdk

@@ -45,6 +45,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.webkit.WebViewClientCompat;
+import androidx.activity.OnBackPressedCallback;
 
 import com.google.android.gms.R;
 
@@ -197,6 +198,15 @@ public class LoginActivity extends AssistantActivity {
             setBackButtonText(android.R.string.cancel);
             setNextButtonText(R.string.auth_sign_in);
         }
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+        @Override
+          public void handleOnBackPressed() {
+            loginCanceled();
+          }
+        };
+        getOnBackPressedDispatcher().addCallback(callback);
+
     }
 
     @Override
@@ -234,12 +244,6 @@ public class LoginActivity extends AssistantActivity {
             response.onError(AccountManager.ERROR_CODE_CANCELED, "Canceled");
         }
         if (SDK_INT >= 21) { finishAndRemoveTask(); } else finish();
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        loginCanceled();
     }
 
     private void init() {

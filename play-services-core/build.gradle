@@ -5,6 +5,7 @@
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
 
 configurations {
     mapboxRuntimeOnly
@@ -73,7 +74,7 @@ dependencies {
     //vtmRuntimeOnly project(':play-services-maps-core-vtm')
     defaultRuntimeOnly project(':play-services-location-core-provider')
 
-    if (hasModule("nearby", true)) runtimeOnly project(':play-services-nearby-core-package')
+    //if (hasModule("nearby", true)) runtimeOnly project(':play-services-nearby-core-package')
     //if (hasModule("hms", false)) hmsRuntimeOnly project(':play-services-maps-core-hms')
 
     // AndroidX UI
@@ -112,6 +113,9 @@ android {
 
     lint {
           baseline = file("lint-baseline.xml")
+          disable "FlowOperatorInvokedInComposition"
+          disable "CoroutineCreationDuringComposition"
+          disable "StateFlowValueCalledInComposition"
       }
 
     buildFeatures {
@@ -215,6 +219,11 @@ android {
             useLegacyPackaging true
         }
     }
+}
+
+composeCompiler {
+    reportsDestination = layout.buildDirectory.dir("compose_compiler")
+    stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
 }
 
 if (file('user.gradle').exists()) {

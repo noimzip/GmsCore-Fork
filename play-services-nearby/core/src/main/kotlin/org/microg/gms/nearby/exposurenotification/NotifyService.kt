@@ -115,7 +115,7 @@ class NotifyService : LifecycleService() {
             if (SDK_INT >= 19) addAction(LocationManager.MODE_CHANGED_ACTION)
             addAction(LocationManager.PROVIDERS_CHANGED_ACTION)
             addAction(NOTIFICATION_UPDATE_ACTION)
-        })
+        }, RECEIVER_EXPORTED)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
