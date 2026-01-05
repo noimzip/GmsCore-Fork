@@ -26,7 +26,6 @@ android {
     }
 
     defaultConfig {
-        versionName version
         minSdkVersion androidMinSdk
         targetSdkVersion androidTargetSdk
         buildConfigField "int", "VERSION_CODE", "$appVersionCode"

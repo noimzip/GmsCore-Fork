@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.13.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.13.0)" variant="all" version="8.13.0">
+<issues format="6" by="lint 8.13.1" type="baseline" client="gradle" dependencies="false" name="AGP (8.13.1)" variant="all" version="8.13.1">
 
     <issue
         id="MissingPermission"
@@ -137,14 +137,14 @@
         id="Aligned16KB"
         message="The native library `arm64-v8a/libmapbox-gl.so` (from `org.maplibre.gl:android-sdk:10.2.0`) is not 16 KB aligned">
         <location
-            file="$GRADLE_USER_HOME/caches/8.13/transforms/d6142b518c8bd6317e4722cbe357eecb/transformed/android-sdk-10.2.0/jni/arm64-v8a/libmapbox-gl.so"/>
+            file="$GRADLE_USER_HOME/caches/8.13/transforms/55a94ba1507824fae7b7bdc953bcd8f8/transformed/android-sdk-10.2.0/jni/arm64-v8a/libmapbox-gl.so"/>
     </issue>
 
     <issue
         id="Aligned16KB"
         message="The native library `arm64-v8a/libmapbox-gl.so` (from `org.maplibre.gl:android-sdk:10.2.0`) is not 16 KB aligned">
         <location
-            file="$GRADLE_USER_HOME/caches/8.13/transforms/d6142b518c8bd6317e4722cbe357eecb/transformed/android-sdk-10.2.0/jni/arm64-v8a/libmapbox-gl.so"/>
+            file="$GRADLE_USER_HOME/caches/8.13/transforms/55a94ba1507824fae7b7bdc953bcd8f8/transformed/android-sdk-10.2.0/jni/arm64-v8a/libmapbox-gl.so"/>
     </issue>
 
     <issue

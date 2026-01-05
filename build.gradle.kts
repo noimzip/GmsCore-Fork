@@ -3,56 +3,42 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-buildscript {
-    ext.cronetVersion = '102.5005.125'
-    ext.wearableVersion = '0.1.1'
+plugins {
+    val cronetVersion = '102.5005.125'
+    val wearableVersion = '0.1.1'
 
-    ext.kotlinVersion = '2.3.0'
-    ext.coroutineVersion = '1.3.9'
+    val kotlinVersion = '2.2.21'
+    val coroutineVersion = '1.10.2'
 
-    ext.annotationVersion = '1.9.1'
-    ext.appcompatVersion = '1.7.1'
-    ext.biometricVersion = '1.1.0'
-    ext.coreVersion = '1.17.0'
-    ext.fragmentVersion = '1.8.9'
-    ext.lifecycleVersion = '2.10.0'
-    ext.loaderVersion = '1.1.0'
-    ext.materialVersion = '1.14.0-alpha07'
-    ext.mediarouterVersion = '1.8.1'
-    ext.multidexVersion = '2.0.1'
-    ext.navigationVersion = '2.9.6'
-    ext.preferenceVersion = '1.2.1'
-    ext.recyclerviewVersion = '1.4.0'
-    ext.webkitVersion = '1.14.0'
+    val annotationVersion = '1.9.1'
+    val appcompatVersion = '1.7.1'
+    val biometricVersion = '1.1.0'
+    val coreVersion = '1.17.0'
+    val fragmentVersion = '1.8.9'
+    val lifecycleVersion = '2.10.0'
+    val loaderVersion = '1.1.0'
+    val materialVersion = '1.14.0-alpha07'
+    val mediarouterVersion = '1.8.1'
+    val multidexVersion = '2.0.1'
+    val navigationVersion = '2.9.6'
+    val preferenceVersion = '1.2.1'
+    val recyclerviewVersion = '1.4.0'
+    val webkitVersion = '1.14.0'
 
-    ext.slf4jVersion = '2.0.17'
-    ext.volleyVersion = '1.2.1'
-    ext.okHttpVersion = '4.12.0'
-    ext.ktorVersion = '2.3.12'
-    ext.wireVersion = '5.4.0'
-    ext.tinkVersion = '1.20.0'
+    val slf4jVersion = '2.0.17'
+    val volleyVersion = '1.2.1'
+    val okHttpVersion = '4.12.0'
+    val ktorVersion = '2.3.12'
+    val wireVersion = '5.4.0'
+    val tinkVersion = '1.20.0'
 
-    ext.androidBuildGradleVersion = '8.13.2'
+    val androidBuildGradleVersion = '8.13.1'
 
-    ext.androidBuildVersionTools = '36.1.0'
+    val androidBuildVersionTools = '36.0.0'
 
-    ext.androidMinSdk = 26
-    ext.androidTargetSdk = 36
-    ext.androidCompileSdk = 36
-
-    ext.localProperties = new Properties()
-
-    try {
-        var stream = rootProject.file('local.properties').newDataInputStream()
-        ext.localProperties.load(stream)
-        stream.close()
-    } catch (ignored) {
-        // Ignore
-    }
-
-    ext.hasModule = (String name, boolean enabledByDefault) -> {
-        return ext.localProperties.getProperty("modules." + name, enabledByDefault.toString()).toBoolean()
-    }
+    val androidMinSdk = 26
+    val androidTargetSdk = 36
+    val androidCompileSdk = 36
 
     repositories {
         mavenCentral()
@@ -67,13 +53,13 @@ buildscript {
 }
 
 def execResult(... args) {
-    providers.exec { commandLine args }.standardOutput.asText.get()
+    providers.exec { commandLine args }.standardOutput.asTval get()
 }
 
 def ignoreGit = providers.environmentVariable('GRADLE_MICROG_VERSION_WITHOUT_GIT').getOrElse('0') == '1'
-def gmsVersion = "25.50.33"
+def gmsVersion = "25.49.32"
 def gmsVersionCode = Integer.parseInt(gmsVersion.replaceAll('\\.', ''))
-def vendingVersion = "49.3.28"
+def vendingVersion = "49.1.33"
 def vendingVersionCode = Integer.parseInt(vendingVersion.replaceAll('\\.', ''))
 def gitVersionBase = !ignoreGit ? execResult('git', 'describe', '--tags', '--abbrev=0', '--match=v[0-9]*').trim().substring(1) : "v0.0.0.$gmsVersionCode"
 def gitCommitCount = !ignoreGit ? Integer.parseInt(execResult('git', 'rev-list', '--count', "v$gitVersionBase..HEAD").trim()) : 0
@@ -109,10 +95,10 @@ allprojects {
 
     group = 'org.microg.gms'
     version = ourGmsVersionName
-    ext.vendingAppVersionName = ourVendingVersionName
-    ext.vendingAppVersionCode = ourVendingVersionCode
-    ext.appVersionCode = ourGmsVersionCode
-    ext.isReleaseVersion = false
+    val vendingAppVersionName = ourVendingVersionName
+    val vendingAppVersionCode = ourVendingVersionCode
+    val appVersionCode = ourGmsVersionCode
+    val isReleaseVersion = false
 }
 
 subprojects {

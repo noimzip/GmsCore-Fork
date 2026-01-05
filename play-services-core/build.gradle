@@ -113,10 +113,8 @@ android {
 
     lint {
           baseline = file("lint-baseline.xml")
-          disable "FlowOperatorInvokedInComposition"
-          disable "CoroutineCreationDuringComposition"
-          disable "StateFlowValueCalledInComposition"
-      }
+        disable 'MissingTranslation', 'GetLocales', 'InvalidPackage', 'BatteryLife', 'ImpliedQuantity', 'MissingQuantity', 'InvalidWakeLockTag', 'UniquePermission', 'FlowOperatorInvokedInComposition', 'CoroutineCreationDuringComposition', 'StateFlowValueCalledInComposition'
+    }
 
     buildFeatures {
         buildConfig = true
@@ -159,9 +157,6 @@ android {
         }
     }
 
-    lintOptions {
-        disable 'MissingTranslation', 'GetLocales', 'InvalidPackage', 'BatteryLife', 'ImpliedQuantity', 'MissingQuantity', 'InvalidWakeLockTag', 'UniquePermission'
-    }
 
     buildTypes {
         release {
@@ -214,9 +209,11 @@ android {
     }
 
     packagingOptions {
-        exclude 'META-INF/ASL2.0'
         jniLibs {
             useLegacyPackaging true
+        }
+        resources {
+            excludes += ['META-INF/ASL2.0']
         }
     }
 }
@@ -232,6 +229,6 @@ if (file('user.gradle').exists()) {
 
 android.applicationVariants.all { variant ->
     variant.outputs.each { output ->
-        output.outputFileName = variant.applicationId + "-" + variant.versionCode + variant.versionName.substring(version.length()) + ".apk"
+        output.outputFileName = variant.applicationId + ".apk"
     }
 }

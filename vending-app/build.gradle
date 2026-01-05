@@ -15,6 +15,7 @@ android {
 
     lint {
           baseline = file("lint-baseline.xml")
+        disable 'MissingTranslation', 'GetLocales'
     }
 
     defaultConfig {
@@ -79,9 +80,6 @@ android {
         compose true
     }
 
-    lintOptions {
-        disable 'MissingTranslation', 'GetLocales'
-    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -162,6 +160,6 @@ if (file('user.gradle').exists()) {
 
 android.applicationVariants.all { variant ->
     variant.outputs.each { output ->
-        output.outputFileName = variant.applicationId + "-" + variant.versionCode + variant.versionName.substring(vendingAppVersionName.length()) + ".apk"
+        output.outputFileName = variant.applicationId + ".apk"
     }
 }
