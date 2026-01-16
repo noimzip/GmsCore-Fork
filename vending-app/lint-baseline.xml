@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.8.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.8.2)" variant="all" version="8.8.2">
+
+    <issue
+        id="ApplySharedPref"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        errorLine1="        edit.commit()"
+        errorLine2="             ~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/extensions.kt"
+            line="163"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="InlinedApi"
+        message="Field requires API level 28 (current min is 21): `android.content.pm.PackageManager#GET_SIGNING_CERTIFICATES`"
+        errorLine1="                    expressIntegritySession.packageName, PackageManager.GET_SIGNING_CERTIFICATES or PackageManager.GET_SIGNATURES"
+        errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/expressintegrityservice/ExpressIntegrityService.kt"
+            line="160"
+            column="58"/>
+    </issue>
+
+    <issue
+        id="InlinedApi"
+        message="Field requires API level 29 (current min is 26): `android.content.pm.ServiceInfo#FOREGROUND_SERVICE_TYPE_DATA_SYNC`"
+        errorLine1="                                    this, session, it, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC"
+        errorLine2="                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/android/vending/installer/InstallService.kt"
+            line="164"
+            column="56"/>
+    </issue>
+
+    <issue
+        id="InlinedApi"
+        message="Field requires API level 29 (current min is 21): `android.content.pm.ServiceInfo#FOREGROUND_SERVICE_TYPE_DATA_SYNC`"
+        errorLine1="                                this, session, it, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC"
+        errorLine2="                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/android/vending/installer/InstallService.kt"
+            line="212"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="`&lt;com.android.vending.GrantFakeSignaturePermissionActivity>` requires API level 23 (current min is 21)"
+        errorLine1="        &lt;activity"
+        errorLine2="        ^">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="87"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `forceQueryable` is only used in API level 30 and higher (current min is 21)"
+        errorLine1="        android:forceQueryable=&quot;true&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="73"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UnspecifiedRegisterReceiverFlag"
+        message="`cancelReceiver` is missing `RECEIVER_EXPORTED` or `RECEIVER_NOT_EXPORTED` flag for unprotected broadcasts registered for CANCEL_DOWNLOAD"
+        errorLine1="        context.registerReceiver(cancelReceiver, filter)"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DownloadManager.kt"
+            line="72"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.webkit:webkit than 1.10.0 is available: 1.14.0"
+        errorLine1="    implementation &quot;androidx.webkit:webkit:$webkitVersion&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="111"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose:compose-bom than 2022.10.00 is available: 2025.12.00"
+        errorLine1="    implementation platform(&apos;androidx.compose:compose-bom:2022.10.00&apos;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="115"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.activity:activity-compose than 1.7.2 is available: 1.12.1"
+        errorLine1="    implementation &apos;androidx.activity:activity-compose:1.7.2&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="119"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of io.coil-kt:coil-compose than 2.4.0 is available: 2.7.0"
+        errorLine1="    implementation(&quot;io.coil-kt:coil-compose:2.4.0&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="120"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.android.material:material than 1.11.0 is available: 1.13.0"
+        errorLine1="    implementation &quot;com.google.android.material:material:$materialVersion&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="122"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-android than 1.8.1 is available: 1.10.2"
+        errorLine1="    implementation &quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="136"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.7.0 is available: 2.10.0"
+        errorLine1="    implementation &quot;androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="139"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.12.0 is available: 1.17.0"
+        errorLine1="    implementation &quot;androidx.core:core-ktx:$coreVersion&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="140"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.1"
+        errorLine1="    implementation &quot;androidx.appcompat:appcompat:$appcompatVersion&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="141"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lifecycle:lifecycle-livedata-ktx than 2.6.2 is available: 2.10.0"
+        errorLine1="    implementation &apos;androidx.lifecycle:lifecycle-livedata-ktx:2.6.2&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="142"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.preference:preference-ktx than 1.2.0 is available: 1.2.1"
+        errorLine1="    implementation &quot;androidx.preference:preference-ktx:$preferenceVersion&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="143"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="ComposableNaming"
+        message="Composable functions with a return type should start with a lowercase letter"
+        errorLine1="fun DayNightColor(day: Long, night: Long): Color = if (isSystemInDarkTheme()) Color(night) else Color(day)"
+        errorLine2="    ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/Utils.kt"
+            line="37"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ModifierFactoryExtensionFunction"
+        message="Modifier factory functions should be extensions on Modifier"
+        errorLine1="fun RowScope.applyAlignment(modifier: Modifier, viewInfo: BViewInfo?): Modifier {"
+        errorLine2="             ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/Extends.kt"
+            line="32"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ModifierFactoryExtensionFunction"
+        message="Modifier factory functions should be extensions on Modifier"
+        errorLine1="fun ColumnScope.applyAlignment(modifier: Modifier, viewInfo: BViewInfo?): Modifier {"
+        errorLine2="                ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/Extends.kt"
+            line="48"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="SwitchIntDef"
+        message="Switch statement on an `int` with known associated constant missing case `AssetPackStatus.CANCELED`, `AssetPackStatus.COMPLETED`, `AssetPackStatus.FAILED`, `AssetPackStatus.NOT_INSTALLED`, `AssetPackStatus.UNKNOWN`"
+        errorLine1="                            switch (state.status()) {"
+        errorLine2="                            ~~~~~~">
+        <location
+            file="src/main/java/com/google/android/play/core/assetpacks/AssetPackServiceClient.java"
+            line="143"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UnnecessaryComposedModifier"
+        message="Unnecessary use of Modifier.composed"
+        errorLine1="fun Modifier.applySize(size: DpSize?): Modifier = composed {"
+        errorLine2="                                                  ~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/Extends.kt"
+            line="82"
+            column="51"/>
+    </issue>
+
+    <issue
+        id="Typos"
+        message="&quot;internett&quot; is usually capitalized as &quot;Internett&quot;"
+        errorLine1="    &lt;string name=&quot;error_network&quot;>Ikke koblet til internett. Sjekk at Wi-Fi eller mobilt internett er skrudd på og prøv igjen.&lt;/string>"
+        errorLine2="                                                 ^">
+        <location
+            file="src/main/res/values-nb-rNO/strings.xml"
+            line="27"
+            column="50"/>
+    </issue>
+
+    <issue
+        id="Typos"
+        message="&quot;internett&quot; is usually capitalized as &quot;Internett&quot;"
+        errorLine1="    &lt;string name=&quot;error_network&quot;>Ikke koblet til internett. Sjekk at Wi-Fi eller mobilt internett er skrudd på og prøv igjen.&lt;/string>"
+        errorLine2="                                                                                        ^">
+        <location
+            file="src/main/res/values-nb-rNO/strings.xml"
+            line="27"
+            column="89"/>
+    </issue>
+
+    <issue
+        id="SetJavaScriptEnabled"
+        message="Using `setJavaScriptEnabled` can introduce XSS vulnerabilities into your application, review carefully"
+        errorLine1="        settings.javaScriptEnabled = true"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/WebViewHelper.kt"
+            line="124"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="SetJavaScriptEnabled"
+        message="Using `setJavaScriptEnabled` can introduce XSS vulnerabilities into your application, review carefully"
+        errorLine1="                    javaScriptEnabled = true"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/WebViewHelper.kt"
+            line="149"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="ExportedReceiver"
+        message="Exported receiver does not require permission"
+        errorLine1="        &lt;receiver android:name=&quot;org.microg.vending.WorkAccountChangedReceiver&quot;"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="250"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ExportedService"
+        message="Exported service does not require permission"
+        errorLine1="        &lt;service"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="101"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ExportedService"
+        message="Exported service does not require permission"
+        errorLine1="        &lt;service android:name=&quot;com.google.android.finsky.splitinstallservice.SplitInstallService&quot;"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="176"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ExportedService"
+        message="Exported service does not require permission"
+        errorLine1="        &lt;service"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="183"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ExportedService"
+        message="Exported service does not require permission"
+        errorLine1="        &lt;service"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="193"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ExportedService"
+        message="Exported service does not require permission"
+        errorLine1="        &lt;service"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="212"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ExportedService"
+        message="Exported service does not require permission"
+        errorLine1="        &lt;service"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="257"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ExportedService"
+        message="Exported service does not require permission"
+        errorLine1="        &lt;service"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="265"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ExportedService"
+        message="Exported service does not require permission"
+        errorLine1="        &lt;service"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="282"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ExportedService"
+        message="Exported service does not require permission"
+        errorLine1="        &lt;service android:name=&quot;com.google.android.finsky.installservice.DevTriggeredUpdateService&quot;"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="286"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ExportedService"
+        message="Exported service does not require permission"
+        errorLine1="        &lt;service"
+        errorLine2="         ~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="294"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="            tools:targetApi=&quot;21&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="224"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="            tools:targetApi=&quot;21&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="229"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="            tools:targetApi=&quot;21&quot;>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="237"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="            tools:targetApi=&quot;21&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="248"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="            tools:targetApi=&quot;21&quot;>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="307"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="            tools:targetApi=&quot;21&quot;/>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="320"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/vending/installer/AppInstallActivity.kt"
+            line="37"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/vending/installer/AppInstallExtensions.kt"
+            line="128"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/microg/vending/installer/AskInstallReminderActivity.kt"
+            line="21"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="        if (SDK_INT >= 21) {"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DeviceSyncInfo.kt"
+            line="156"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="                    if (SDK_INT >= 21) {"
+        errorLine2="                        ~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/google/android/finsky/DeviceSyncInfo.kt"
+            line="302"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/InAppBillingHostActivity.kt"
+            line="36"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/android/vending/billing/InAppBillingService.kt"
+            line="11"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/InAppBillingServiceImpl.kt"
+            line="59"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/logic/InAppBillingViewModel.kt"
+            line="46"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/android/vending/installer/Install.kt"
+            line="35"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/android/vending/installer/Install.kt"
+            line="56"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/android/vending/installer/Install.kt"
+            line="96"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/android/vending/installer/InstallReceiver.kt"
+            line="11"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/android/vending/installer/InstallService.kt"
+            line="36"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/android/vending/installer/SessionResultReceiver.kt"
+            line="21"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="    @RequiresApi(21)"
+        errorLine2="    ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/android/vending/installer/SessionResultReceiver.kt"
+            line="98"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/SheetUIPage.kt"
+            line="56"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/theme/Theme.kt"
+            line="47"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/android/vending/installer/Uninstall.kt"
+            line="16"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="                if (SDK_INT >= 21) {"
+        errorLine2="                    ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/billing/ui/WebViewHelper.kt"
+            line="106"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="        if (android.os.Build.VERSION.SDK_INT >= 21) {"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/WorkAccountChangedReceiver.kt"
+            line="25"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; `SDK_INT` is always >= 21"
+        errorLine1="@RequiresApi(21)"
+        errorLine2="~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/microg/vending/ui/WorkAppsActivity.kt"
+            line="68"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v21`) is unnecessary; `minSdkVersion` is 21. Merge all the resources in this folder into `drawable`.">
+        <location
+            file="src/main/res/drawable-v21"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v11`) is unnecessary; `minSdkVersion` is 21. Merge all the resources in this folder into `values`.">
+        <location
+            file="src/main/res/values-v11"/>
+    </issue>
+
+    <issue
+        id="UseCompoundDrawables"
+        message="This tag and its children can be replaced by one `&lt;TextView/>` and a compound drawable"
+        errorLine1="    &lt;LinearLayout"
+        errorLine2="     ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_install_reminder.xml"
+            line="7"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="UseCompoundDrawables"
+        message="This tag and its children can be replaced by one `&lt;TextView/>` and a compound drawable"
+        errorLine1="    &lt;LinearLayout"
+        errorLine2="     ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_install_reminder.xml"
+            line="41"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1642 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="      android:pathData=&quot;M25.2,4.5c-2.2,0 -4,1.6 -4,4a4,4 0,0 0,4 4,4 4,0 0,0 4,-4c0,-2.4 -1.8,-4 -4,-4zM25.2,10.9c-1.2,0 -2.2,-1 -2.2,-2.4S24,6 25.2,6c1.2,0 2.2,1 2.2,2.5 0,1.4 -1,2.4 -2.2,2.4zM36,5.4a2.8,2.8 0,0 0,-2.1 -1,4 4,0 0,0 0,8c1,0 1.7,-0.4 2,-0.9v0.6c0,1.5 -0.7,2.3 -2,2.3 -1,0 -1.7,-0.8 -2,-1.4l-1.5,0.6c0.4,1 1.6,2.4 3.5,2.4 2,0 3.7,-1.2 3.7,-4.1L37.6,4.7L36,4.7v0.7zM34,10.9c-1.2,0 -2.2,-1 -2.2,-2.4s1,-2.4 2.2,-2.4c1.2,0 2,1 2,2.4 0.1,1.4 -0.8,2.4 -2,2.4zM16.6,4.5c-2.2,0 -4,1.6 -4,4a4,4 0,0 0,4 4,4 4,0 0,0 4,-4 4,4 0,0 0,-4 -4zM16.6,10.9c-1.2,0 -2.2,-1 -2.2,-2.4s1,-2.5 2.2,-2.5 2.2,1 2.2,2.5c0,1.4 -1,2.4 -2.2,2.4zM6.2,5.7v1.6h4a3,3 0,0 1,-0.9 2.2,4 4,0 0,1 -3,1.2c-2.5,0 -4.5,-2 -4.5,-4.5s2,-4.5 4.4,-4.5a4,4 0,0 1,3 1.2l1.3,-1.2A6,6 0,0 0,6.2 0C3,0 0,2.8 0,6.1s2.9,6.2 6.2,6.2c1.8,0 3.2,-0.6 4.3,-1.7a5.6,5.6 0,0 0,1.5 -4l-0.1,-1L6.2,5.6zM48.4,7c-0.3,-1 -1.3,-2.5 -3.3,-2.5 -2,0 -3.7,1.6 -3.7,4 0,2.2 1.6,4 3.9,4a4,4 0,0 0,3.3 -1.8l-1.4,-1c-0.4,0.7 -1,1.2 -2,1.2 -0.8,0 -1.4,-0.4 -1.8,-1.2l5.2,-2.3 -0.2,-0.4zM43.1,8.4C43,6.8 44.3,6 45,6s1.3,0.4 1.5,0.9L43,8.4zM38.7,12.2h1.8L40.5,0.5h-1.8v11.7zM56.6,0.5h-4.2v11.7h1.8L54.2,7.7h2.4c1.9,0 3.8,-1.4 3.8,-3.6S58.5,0.5 56.6,0.5zM56.6,6.1h-2.4v-4h2.4a2,2 0,0 1,2.1 2c0,1 -0.8,2 -2,2zM61.4,12.1L63,12.1L63,0.6h-1.7v11.7zM67.4,4.5c-1.3,0 -2.6,0.5 -3.1,1.7l1.5,0.7c0.4,-0.7 1,-0.9 1.6,-0.9 1,0 1.9,0.6 1.9,1.5v0.1c-0.4,-0.2 -1,-0.4 -1.9,-0.4 -1.6,0 -3.3,0.9 -3.3,2.6 0,1.6 1.3,2.6 2.9,2.6 1.1,0 1.8,-0.5 2.2,-1.2v1L71,12.2L71,7.5c0,-2 -1.5,-3.1 -3.5,-3.1zM67.2,10.9c-0.6,0 -1.4,-0.3 -1.4,-1 0,-1 1,-1.3 1.9,-1.3a3,3 0,0 1,1.6 0.4c-0.2,1 -1.1,1.9 -2.1,1.9zM77,4.7l-2,5 -2,-5h-2l3.2,7 -1.8,4h1.8l4.8,-11h-2z&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable-v21/google_play.xml"
+            line="13"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.layout.activiy_confirm_purchase` appears to be unused"
+        errorLine1="&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/layout/activiy_confirm_purchase.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.vending_overview_enterprise_row_mandatory_missing_hint` appears to be unused"
+        errorLine1="    &lt;string name=&quot;vending_overview_enterprise_row_mandatory_missing_hint&quot;>Your device is missing mandatory apps chosen by your administrator.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="23"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.vending_overview_enterprise_row_offered_hint` appears to be unused"
+        errorLine1="    &lt;string name=&quot;vending_overview_enterprise_row_offered_hint&quot;>These are all the apps made available by your enterprise.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="25"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.vending_overview_row_update_available` appears to be unused"
+        errorLine1="    &lt;string name=&quot;vending_overview_row_update_available&quot;>Update available&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="28"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.vending_overview_row_installed` appears to be unused"
+        errorLine1="    &lt;string name=&quot;vending_overview_row_installed&quot;>Installed apps&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="29"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.confirm_purchase` appears to be unused"
+        errorLine1="    &lt;string name=&quot;confirm_purchase&quot;>Confirm Purchase&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="36"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.error_unknown` appears to be unused"
+        errorLine1="    &lt;string name=&quot;error_unknown&quot;>Unknown error, please exit and try again.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="39"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.installer_dependency_noun` appears to be unused"
+        errorLine1="    &lt;string name=&quot;installer_dependency_noun&quot;>Required components for %s&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="54"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.MyDialogStyle` appears to be unused"
+        errorLine1="    &lt;style name=&quot;MyDialogStyle&quot; parent=&quot;android:Theme.Dialog&quot;>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/styles.xml"
+            line="14"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="        &lt;ImageView"
+        errorLine2="         ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_install_reminder.xml"
+            line="24"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="        &lt;ImageView"
+        errorLine2="         ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_install_reminder.xml"
+            line="48"
+            column="10"/>
+    </issue>
+
+</issues>

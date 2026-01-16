@@ -12,6 +12,10 @@ android {
     compileSdkVersion androidCompileSdk
     buildToolsVersion "$androidBuildVersionTools"
 
+    lint {
+          baseline = file("lint-baseline.xml")
+    }
+
     defaultConfig {
         versionName vendingAppVersionName
         versionCode vendingAppVersionCode
@@ -51,12 +55,12 @@ android {
             dimension 'target'
             versionNameSuffix "-hw"
         }
-        "huaweilh" {
-            dimension 'target'
-            versionNameSuffix "-lh"
-            versionCode vendingAppVersionCode - 1000
-            matchingFallbacks = ['huawei']
-        }
+        //"huaweilh" {
+        //    dimension 'target'
+        //    versionNameSuffix "-lh"
+        //    versionCode vendingAppVersionCode - 1000
+        //    matchingFallbacks = ['huawei']
+        //}
     }
 
     sourceSets {

@@ -70,11 +70,11 @@ dependencies {
     implementation project(':play-services-fitness')
 
     mapboxRuntimeOnly project(':play-services-maps-core-mapbox')
-    vtmRuntimeOnly project(':play-services-maps-core-vtm')
+    //vtmRuntimeOnly project(':play-services-maps-core-vtm')
     defaultRuntimeOnly project(':play-services-location-core-provider')
 
     if (hasModule("nearby", true)) runtimeOnly project(':play-services-nearby-core-package')
-    if (hasModule("hms", false)) hmsRuntimeOnly project(':play-services-maps-core-hms')
+    //if (hasModule("hms", false)) hmsRuntimeOnly project(':play-services-maps-core-hms')
 
     // AndroidX UI
     implementation "androidx.multidex:multidex:$multidexVersion"
@@ -111,6 +111,10 @@ android {
 
     compileSdkVersion androidCompileSdk
     buildToolsVersion "$androidBuildVersionTools"
+
+    lint {
+          baseline = file("lint-baseline.xml")
+      }
 
     buildFeatures {
         buildConfig = true
@@ -173,12 +177,12 @@ android {
             dimension 'target'
             versionNameSuffix "-hw"
         }
-        "huaweilh" {
-            dimension 'target'
-            versionNameSuffix "-lh"
-            versionCode appVersionCode - 1000
-            matchingFallbacks = ['huawei']
-        }
+        //"huaweilh" {
+        //    dimension 'target'
+        //    versionNameSuffix "-lh"
+        //    versionCode appVersionCode - 1000
+        //    matchingFallbacks = ['huawei']
+        //}
         "user" {
             dimension 'target'
             applicationId = "org.microg.gms"
@@ -187,15 +191,15 @@ android {
             matchingFallbacks = ['default']
             resValue "string", "package_id", "org.microg.gms"
         }
-        "hms" {
-            dimension 'maps'
-        }
+        //"hms" {
+        //    dimension 'maps'
+        //}
         "mapbox" {
             dimension 'maps'
         }
-        "vtm" {
-            dimension 'maps'
-        }
+        //"vtm" {
+        //    dimension 'maps'
+        //}
     }
 
     compileOptions {

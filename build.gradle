@@ -17,7 +17,7 @@ buildscript {
     ext.fragmentVersion = '1.6.2'
     ext.lifecycleVersion = '2.7.0'
     ext.loaderVersion = '1.1.0'
-    ext.materialVersion = '1.11.0'
+    ext.materialVersion = '1.14.0-alpha01'
     ext.mediarouterVersion = '1.6.0'
     ext.multidexVersion = '2.0.1'
     ext.navigationVersion = '2.7.7'
@@ -33,13 +33,13 @@ buildscript {
     ext.wireVersion = '4.9.9'
     ext.tinkVersion = '1.13.0'
 
-    ext.androidBuildGradleVersion = '8.2.2'
+    ext.androidBuildGradleVersion = '8.8.2'
 
-    ext.androidBuildVersionTools = '34.0.0'
+    ext.androidBuildVersionTools = '35.0.0'
 
-    ext.androidMinSdk = 19
+    ext.androidMinSdk = 21
     ext.androidTargetSdk = 29
-    ext.androidCompileSdk = 35
+    ext.androidCompileSdk = 36
 
     ext.localProperties = new Properties()
 
@@ -72,9 +72,9 @@ def execResult(... args) {
 }
 
 def ignoreGit = providers.environmentVariable('GRADLE_MICROG_VERSION_WITHOUT_GIT').getOrElse('0') == '1'
-def gmsVersion = "25.09.32"
+def gmsVersion = "25.49.32"
 def gmsVersionCode = Integer.parseInt(gmsVersion.replaceAll('\\.', ''))
-def vendingVersion = "40.2.26"
+def vendingVersion = "49.1.32"
 def vendingVersionCode = Integer.parseInt(vendingVersion.replaceAll('\\.', ''))
 def gitVersionBase = !ignoreGit ? execResult('git', 'describe', '--tags', '--abbrev=0', '--match=v[0-9]*').trim().substring(1) : "v0.0.0.$gmsVersionCode"
 def gitCommitCount = !ignoreGit ? Integer.parseInt(execResult('git', 'rev-list', '--count', "v$gitVersionBase..HEAD").trim()) : 0

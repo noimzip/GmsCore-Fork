@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="toast_installed">microG Companion 単体では使用できません。 代わりに microG 設定を開きました。</string>
-    <string name="toast_not_installed">microG Companion は単体では使用できません。microG を利用するには microG Services をインストールしてください。</string>
+    <string name="toast_not_installed">microG Companion は単体では使用できません。microG を利用するには microG 開発者サービスをインストールしてください。</string>
     <string name="app_name">microG Companion</string>
     <string name="pay_disabled">お支払いは現在使用できません</string>
     <string name="confirm_purchase">購入を確認</string>

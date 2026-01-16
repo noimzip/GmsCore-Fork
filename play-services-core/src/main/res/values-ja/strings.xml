@@ -14,9 +14,9 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="gms_app_name">microG Services</string>
+    <string name="gms_app_name">microG 開発者サービス</string>
     <string name="gms_settings_name">microG 設定</string>
-    <string name="gms_settings_summary">microG services をセットアップ。</string>
+    <string name="gms_settings_summary">microG 開発者サービスをセットアップ</string>
     <string name="just_a_sec">しばらくお待ちください…</string>
     <string name="google_account_label">Google</string>
     <string name="ask_permission_tos">続行すると、このアプリと Google がそれぞれの利用規約とプライバシーポリシーに従ってあなたの情報を使用することを許可したことになります。</string>
@@ -55,7 +55,7 @@
     <string name="place_picker_select_title">この位置を選択</string>
     <string name="place_picker_nearby_places">近くの場所</string>
     <string name="place_picker_location_lat_lng">(%1$.7f, %2$.7f)</string>
-    <string name="lacking_permission_toast">microG Services: <xliff:g example="have full network acccess">%1$s</xliff:g>の許可がありません</string>
+    <string name="lacking_permission_toast">microG 開発者サービスに <xliff:g example="have full network acccess">%1$s</xliff:g> の許可がありません</string>
     <string name="network_type_mobile">モバイルネットワーク</string>
     <string name="network_type_wifi">Wi-Fi</string>
     <string name="network_type_roaming">ローミング</string>
@@ -68,16 +68,16 @@
     <string name="self_check_resolution_fake_sig_perm">実行しているROMはネイティブの署名スプーフィングに対応していません。 あなたはXposedやその他のシステムを使用して、署名スプーフィングを使用することが出来ます。 どのROMが署名スプーフィングをサポートしているか、またサポートしていないROMでmicroGを使用する方法に関するドキュメントを確認してください。</string>
     <string name="self_check_name_perm_granted">システムは署名スプーフィング権限の許可しています: </string>
     <string name="self_check_resolution_perm_granted">これは、ROMが署名スプーフィングをサポートしていることを示す強力な指標ですが、有効化するには追加の操作が必要です。 必要になる可能性のある手順についてのドキュメントを確認してください。</string>
-    <string name="self_check_name_system_spoofs">システムの署名スプーフィング: </string>
+    <string name="self_check_name_system_spoofs">システムの署名スプーフィング </string>
     <string name="self_check_resolution_system_spoofs">必要になる可能性のある手順についてのドキュメントを確認してください。</string>
-    <string name="self_check_pkg_gms">microG Services(GmsCore)</string>
-    <string name="self_check_pkg_vending">microG Companion(Phonesky)</string>
-    <string name="self_check_pkg_gsf">microG サービスフレームワーク(GSF)</string>
-    <string name="self_check_name_app_installed"><xliff:g example="F-Droid">%1$s</xliff:g> がインストールされています。</string>
+    <string name="self_check_pkg_gms">microG 開発者サービス</string>
+    <string name="self_check_pkg_vending">microG Companion</string>
+    <string name="self_check_pkg_gsf">microG サービスフレームワーク</string>
+    <string name="self_check_name_app_installed"><xliff:g example="F-Droid">%1$s</xliff:g> のインストール</string>
     <string name="self_check_resolution_app_installed"><xliff:g example="F-Droid">%1$s</xliff:g>、または互換性のあるものをインストールしてください。 互換性のあるアプリケーションについてのドキュメントを参照してください。</string>
-    <string name="self_check_name_correct_sig"><xliff:g example="F-Droid">%1$s</xliff:g> が持つ正しい署名: </string>
+    <string name="self_check_name_correct_sig"><xliff:g example="F-Droid">%1$s</xliff:g> の正しい署名</string>
     <string name="self_check_resolution_correct_sig">インストールされている <xliff:g example="F-Droid">%1$s</xliff:g> に互換性がないか、署名スプーフィングが有効ではありません。 互換性のあるアプリケーションとROMに関するドキュメントを確認してください。</string>
-    <string name="self_check_name_battery_optimizations">バッテリーの最適化を無効にしてください:</string>
+    <string name="self_check_name_battery_optimizations">バッテリーの最適化の無効化</string>
     <string name="self_check_resolution_battery_optimizations">バッテリーの最適化を無効にするには、ここをタップしてください。 これを行わない場合、アプリが誤動作する可能性があります。</string>
     <!-- Settings strings -->
     <string name="prefcat_about">情報</string>
@@ -88,7 +88,7 @@
     <string name="prefcat_services">サービス</string>
     <string name="prefcat_test">テスト</string>
     <string name="cond_gcm_bat_title">バッテリーの最適化が有効です</string>
-    <string name="cond_gcm_bat_summary">Cloud Messagingが有効になっていますが、microG Serviceのバッテリーの最適化が有効に設定されています。 プッシュ通知が正しく動作するためには、バッテリーの最適化を無効にする必要があります。</string>
+    <string name="cond_gcm_bat_summary">Cloud Messagingが有効になっていますが、microG 開発者サービスのバッテリーの最適化が有効に設定されています。 プッシュ通知が正しく動作するためには、バッテリーの最適化を無効にする必要があります。</string>
     <string name="cond_gcm_bat_action">最適化無効</string>
     <string name="cond_perm_title">権限がありません</string>
     <string name="prefs_account">アカウント設定</string>
@@ -111,7 +111,7 @@
     <string name="pref_gcm_confirm_new_apps_title">新しいアプリの確認</string>
     <string name="pref_gcm_confirm_new_apps_summary">プッシュ通知を受信する新しいアプリが登録される前に確認する</string>
     <string name="pref_gcm_ping_interval">Ping間隔: <xliff:g example="10 minutes">%1$s</xliff:g></string>
-    <string name="pref_about_title">microG Servicesについて</string>
+    <string name="pref_about_title">microG 開発者サービスについて</string>
     <string name="pref_about_summary">バージョン情報と使用したライブラリ</string>
     <string name="gcm_app_error_unregistering">登録解除中にエラーが発生しました</string>
     <string name="gcm_app_not_installed_anymore">アプリが削除されています</string>
@@ -145,7 +145,7 @@
     <string name="ask_service_permission_title"><xliff:g example="F-Droid">%1$s</xliff:g> は次の内容の使用を要求しています:</string>
     <string name="prefcat_accounts_settings_title">設定</string>
     <string name="prefcat_accounts_current_accounts_title">アカウント</string>
-    <string name="service_name_vending">Play ストアサービス</string>
+    <string name="service_name_vending">microG Companion サービス</string>
     <string name="pref_auth_visible_title">アプリがアカウントを検索できるようにする</string>
     <string name="pref_auth_include_android_id_title">デバイス登録による認証</string>
     <string name="signin_confirm_button_text">共有と許可</string>
@@ -260,7 +260,7 @@
     <string name="games_change_per_game_dialog_option_sign_out">サインアウト</string>
     <string name="games_change_per_game_dialog_option_sign_out_snackbar_success_message">このゲームからサインアウトされました</string>
     <string name="games_change_sign_out_of_all_games_snackbar_success_message">すべてのゲームからサインアウトされました</string>
-    <string name="limited_services_app_name">限定された microG Services</string>
+    <string name="limited_services_app_name">限定された microG 開発者サービス</string>
     <string name="pref_auth_include_android_id_summary">無効にすると、認証要求はデバイス登録と関連付けられなくなり、これにより不正なデバイスがサインインできる可能性がありますが、予期せぬ結果を招く恐れがあります。</string>
     <string name="pref_auth_strip_device_name_title">認証用のストリップデバイス名</string>
     <string name="pref_auth_strip_device_name_summary">有効にすると、認証リクエストにデバイスの名前が含まれなくなります。これにより、許可されていないデバイスがサインインできる可能性がありますが、予期せぬ結果を招く恐れがあります。</string>
@@ -337,7 +337,7 @@
     <string name="pref_vending_asset_delivery_summary">Play アセット配信 を使用するアプリから要求があった場合に追加アセットをダウンロードする</string>
     <string name="pref_vending_asset_device_sync_summary">Play アセット配信 を使用するアプリケーションは、現在使用中のデバイスの情報に基づいて追加のアセットをダウンロードします。</string>
     <string name="pref_vending_asset_device_sync_switch">デバイス情報の同期を有効にする</string>
-    <string name="limited_services_dialog_information">限定された microG Services をご利用中です。通常の microG Services と異なり、このサービスは Google Play 上のアプリではなく、microG ライブラリを使用するアプリでのみ動作します。つまり、ほとんどのアプリケーションはこれらのサービスを無視します。</string>
+    <string name="limited_services_dialog_information">限定された microG 開発者サービスをご利用中です。通常の microG 開発者サービスと異なり、このサービスは Google Play 上のアプリではなく、microG ライブラリを使用するアプリでのみ動作します。つまり、ほとんどのアプリケーションはこれらのサービスを無視します。</string>
     <string name="games_api_access_denied">このデバイス上のいずれのアカウントも Games API にアクセスできません</string>
     <string name="games_change_default_account_for_all_games_snackbar_success_message">%1$s で全てのゲームにサインインされます</string>
     <string name="games_change_default_account_for_new_games_snackbar_success_message">%1$s で新しいゲームにサインインされます</string>
@@ -384,7 +384,7 @@
     <string name="family_management_pwd_error">パスワードが間違っています。もう一度入力してください</string>
     <string name="barcode_scanner_brand">%1$s の代わりに microG によってスキャンされました</string>
     <string name="camera_permission_dialog_button">OK</string>
-    <string name="camera_permission_dialog_message">microG サービスは、%1$s のコードをスキャンするためにデバイスのカメラにアクセスする必要があります。\n\n有効にするには、設定で microG サービスにカメラの権限を許可してください。</string>
+    <string name="camera_permission_dialog_message">microG 開発者サービスは、%1$s のコードをスキャンするためにデバイスのカメラにアクセスする必要があります。\n\n有効にするには、設定で microG 開発者サービスにカメラの権限を許可してください。</string>
     <string name="camera_permission_dialog_title">カメラの許可が必要です</string>
     <string name="pref_app_install_settings_title">アプリインストーラー設定</string>
     <string name="pref_app_install_switch_title">アプリのインストールを許可する</string>
