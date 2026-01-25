@@ -74,7 +74,7 @@ def execResult(... args) {
 def ignoreGit = providers.environmentVariable('GRADLE_MICROG_VERSION_WITHOUT_GIT').getOrElse('0') == '1'
 def gmsVersion = "26.03.31"
 def gmsVersionCode = Integer.parseInt(gmsVersion.replaceAll('\\.', ''))
-def vendingVersion = "49.7.20"
+def vendingVersion = "49.8.20"
 def vendingVersionCode = Integer.parseInt(vendingVersion.replaceAll('\\.', ''))
 def gitVersionBase = !ignoreGit ? execResult('git', 'describe', '--tags', '--abbrev=0', '--match=v[0-9]*').trim().substring(1) : "v0.0.0.$gmsVersionCode"
 def gitCommitCount = !ignoreGit ? Integer.parseInt(execResult('git', 'rev-list', '--count', "v$gitVersionBase..HEAD").trim()) : 0
